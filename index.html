@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>참회록 — 나의 고백</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -15,110 +15,126 @@
   --white:#fffdf7;--border:rgba(184,137,42,0.3);
   --purple:#6050a0;--green:#1e6440;--blue:#1a5080;
 }
-body{font-family:'Noto Sans KR',sans-serif;background:#0f0b06;color:var(--ink);height:100vh;display:flex;flex-direction:column;overflow:hidden}
-.topbar{background:var(--sidebar-bg);border-bottom:1px solid rgba(184,137,42,0.2);padding:0 1.2rem;height:50px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:100}
-.topbar-title{font-family:'IM Fell English',serif;color:var(--gold-light);font-size:20px;letter-spacing:.05em}
-.topbar-title span{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--sidebar-text);margin-left:10px;opacity:.7;vertical-align:middle}
-.topbar-right{display:flex;gap:6px;align-items:center}
-.t-btn{background:rgba(184,137,42,0.1);border:1px solid rgba(184,137,42,0.28);color:var(--sidebar-text);padding:4px 11px;border-radius:4px;font-size:11.5px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .18s;white-space:nowrap}
-.t-btn:hover{background:rgba(184,137,42,0.22);color:var(--gold-light)}
-.t-btn.gold{background:rgba(184,137,42,0.18);border-color:var(--gold);color:var(--gold-light);font-weight:500}
-.today-str{font-size:11px;color:rgba(184,137,42,.5);font-style:italic;margin-right:4px}
-.app{display:flex;flex:1;overflow:hidden;height:calc(100vh - 50px)}
-.sidebar{width:192px;background:var(--sidebar-bg);border-right:1px solid rgba(184,137,42,0.13);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
-.sb-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(140,112,85,.5);padding:14px 14px 4px}
-.sb-item{display:flex;align-items:center;gap:7px;padding:7px 14px;cursor:pointer;color:var(--sidebar-text);font-size:12.5px;transition:all .16s;border-left:2px solid transparent;opacity:.72;white-space:nowrap}
-.sb-item:hover{background:rgba(184,137,42,0.07);opacity:1}
-.sb-item.active{background:rgba(184,137,42,0.11);border-left-color:var(--gold);color:var(--gold-light);opacity:1;font-weight:500}
-.sb-item .ic{width:15px;text-align:center;font-size:12px;opacity:.85;flex-shrink:0}
-.sb-div{height:1px;background:rgba(184,137,42,0.09);margin:5px 14px}
-.content{display:flex;flex:1;overflow:hidden;background:#1c1408}
-.panel{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.p-head{padding:11px 18px 9px;border-bottom:1px solid rgba(184,137,42,0.18);background:rgba(0,0,0,0.18);flex-shrink:0}
-.p-title{font-family:'IM Fell English',serif;font-size:14px;color:var(--gold-light);letter-spacing:.04em;margin-bottom:1px}
-.p-sub{font-size:10.5px;color:var(--ink-faint);opacity:.7}
-.p-body{flex:1;overflow-y:auto;padding:18px 22px;background:var(--parchment);background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.04) 28px);background-size:auto 28px}
-.div-bar{width:1px;background:linear-gradient(to bottom,rgba(184,137,42,.04),rgba(184,137,42,.38) 30%,rgba(184,137,42,.38) 70%,rgba(184,137,42,.04));flex-shrink:0}
-.book-nav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
-.bnav-btn{padding:3px 9px;background:transparent;border:1px solid var(--border);border-radius:3px;font-size:11px;color:var(--ink-faint);cursor:pointer;transition:all .14s;font-family:'Noto Sans KR',sans-serif}
-.bnav-btn:hover{background:var(--gold-pale);color:var(--ink)}
+
+body{font-family:'Noto Sans KR',sans-serif;background:var(--sidebar-bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+
+/* ── TOP BAR ── */
+.topbar{background:var(--sidebar-bg);border-bottom:1px solid rgba(184,137,42,0.2);padding:0 1rem;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:200}
+.topbar-title{font-family:'IM Fell English',serif;color:var(--gold-light);font-size:18px;letter-spacing:.04em}
+.topbar-title small{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--sidebar-text);margin-left:8px;opacity:.7;vertical-align:middle}
+.topbar-right{display:flex;gap:5px}
+.t-btn{background:rgba(184,137,42,0.12);border:1px solid rgba(184,137,42,0.3);color:var(--sidebar-text);padding:5px 10px;border-radius:4px;font-size:11px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;white-space:nowrap}
+.t-btn.gold{background:rgba(184,137,42,0.2);border-color:var(--gold);color:var(--gold-light);font-weight:500}
+
+/* ── DRIVE STATUS ── */
+.drive-bar{background:rgba(52,168,83,0.1);border-bottom:1px solid rgba(52,168,83,0.15);padding:5px 14px;font-size:11px;color:#6bcf8a;display:flex;align-items:center;gap:7px}
+.drive-dot{width:6px;height:6px;border-radius:50%;background:#52a853;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── BOTTOM NAV (모바일 탭바) ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--sidebar-bg);border-top:1px solid rgba(184,137,42,0.2);display:flex;z-index:200;height:56px}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--sidebar-text);opacity:.55;transition:all .18s;font-size:9px;font-family:'Noto Sans KR',sans-serif;border:none;background:none;padding:0}
+.bnav-item .bic{font-size:18px;line-height:1}
+.bnav-item.active{color:var(--gold-light);opacity:1}
+.bnav-item.active .bic{filter:drop-shadow(0 0 4px rgba(184,137,42,0.4))}
+
+/* ── MAIN CONTENT ── */
+.main{flex:1;overflow-y:auto;padding-bottom:70px}
+
+/* ── SCREENS ── */
+.screen{display:none;min-height:calc(100vh - 120px)}
+.screen.on{display:block}
+
+/* ── AUGUSTINE SCREEN ── */
+.aug-screen{background:var(--parchment);background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.04) 28px);background-size:auto 28px}
+.aug-book-nav{display:flex;gap:5px;flex-wrap:wrap;padding:14px 16px 0}
+.bnav-btn{padding:4px 11px;background:transparent;border:1px solid var(--border);border-radius:3px;font-size:11px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif}
 .bnav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
-.book-content{display:none}.book-content.active{display:block}
-.b-heading{font-family:'IM Fell English',serif;font-size:17px;color:var(--red);text-align:center;margin-bottom:5px}
-.b-sub{font-family:'Noto Serif KR',serif;font-size:11.5px;color:var(--ink-faint);text-align:center;margin-bottom:18px;font-style:italic}
-.aug{font-family:'Noto Serif KR',serif;font-size:14px;line-height:2.1;color:var(--ink)}
-.aug p{margin-bottom:14px;text-indent:1.4em}
-.aug .ch{font-size:11px;font-weight:600;color:var(--red);text-indent:0;margin:18px 0 5px;letter-spacing:.05em}
-.aug .drop::first-letter{font-family:'IM Fell English',serif;font-size:48px;line-height:.8;float:left;margin-right:5px;margin-top:5px;color:var(--red)}
-.hq{border-left:3px solid var(--gold);padding:9px 14px;margin:14px 0;background:rgba(184,137,42,.06);font-style:italic;color:var(--ink-light);font-size:13.5px;text-indent:0;border-radius:0 4px 4px 0;font-family:'Noto Serif KR',serif}
-.my-panel .p-body{background:var(--white);background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,137,42,.07) 28px);background-size:auto 28px;padding:14px 18px;display:flex;flex-direction:column}
-.tabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px;flex-shrink:0}
-.tab{padding:4px 9px;background:transparent;border:none;font-size:11px;color:var(--ink-faint);cursor:pointer;border-radius:3px;transition:all .14s;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
-.tab:hover{background:var(--parchment-dark);color:var(--ink)}
-.tab.active{background:var(--gold-pale);color:var(--ink);font-weight:500}
-.ws{display:none;flex-direction:column;flex:1;min-height:0;overflow-y:auto}
-.ws.on{display:flex}
-.s-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-shrink:0}
-.s-ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
-.s-title{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:var(--ink)}
-.s-desc{font-size:11px;color:var(--ink-faint);margin-top:1px}
-.jta{flex:1;width:100%;border:none;outline:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;line-height:2.0;color:var(--ink);resize:none;caret-color:var(--gold);min-height:240px}
-.jta::placeholder{color:rgba(140,112,85,.38);font-style:italic;font-size:13px}
-.wc{font-size:10px;color:var(--ink-faint);text-align:right;margin-top:5px;opacity:.5;flex-shrink:0}
-.letter-list{display:flex;flex-direction:column;gap:7px;margin-bottom:10px;flex-shrink:0}
-.lcard{border:1px solid var(--border);border-radius:5px;padding:8px 12px;background:var(--parchment);cursor:pointer;transition:all .16s;display:flex;justify-content:space-between;align-items:center}
-.lcard:hover{border-color:var(--gold);background:var(--gold-pale)}
-.lname{font-size:13px;font-weight:500;color:var(--ink);font-family:'Noto Serif KR',serif}
-.lprev{font-size:11px;color:var(--ink-faint);margin-top:2px}
-.add-btn{background:transparent;border:1px dashed rgba(184,137,42,.4);color:var(--gold);padding:6px 12px;border-radius:4px;font-size:11.5px;cursor:pointer;transition:all .14s;font-family:'Noto Sans KR',sans-serif;flex-shrink:0}
-.add-btn:hover{background:var(--gold-pale)}
-.led{display:none;flex-direction:column;gap:7px;flex:1;min-height:0}
-.led.on{display:flex}
-.l-to{border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink);padding:4px 0;outline:none;font-style:italic;flex-shrink:0}
+.book-content{display:none;padding:16px}.book-content.active{display:block}
+.b-heading{font-family:'IM Fell English',serif;font-size:18px;color:var(--red);text-align:center;margin-bottom:4px}
+.b-sub{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--ink-faint);text-align:center;margin-bottom:18px;font-style:italic}
+.aug-text{font-family:'Noto Serif KR',serif;font-size:15px;line-height:2.1;color:var(--ink)}
+.aug-text p{margin-bottom:14px;text-indent:1.4em}
+.aug-text .ch{font-size:11px;font-weight:600;color:var(--red);text-indent:0;margin:18px 0 6px;letter-spacing:.05em}
+.aug-text .drop::first-letter{font-family:'IM Fell English',serif;font-size:52px;line-height:.8;float:left;margin-right:6px;margin-top:6px;color:var(--red)}
+.hq{border-left:3px solid var(--gold);padding:10px 14px;margin:14px 0;background:rgba(184,137,42,.07);font-style:italic;color:var(--ink-light);font-size:14px;text-indent:0;border-radius:0 5px 5px 0;font-family:'Noto Serif KR',serif}
+
+/* ── MY MEMOIR SCREEN ── */
+.memoir-screen{background:var(--white)}
+.section-tabs{display:flex;overflow-x:auto;gap:0;border-bottom:1px solid var(--border);background:var(--white);position:sticky;top:52px;z-index:100;-webkit-overflow-scrolling:touch}
+.section-tabs::-webkit-scrollbar{display:none}
+.stab{flex-shrink:0;padding:10px 14px;border:none;background:transparent;font-size:12px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif;border-bottom:2px solid transparent;white-space:nowrap}
+.stab.active{color:var(--ink);border-bottom-color:var(--gold);font-weight:500}
+
+.sec{display:none;padding:16px}.sec.on{display:block}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sec-ic{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.sec-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;color:var(--ink)}
+.sec-desc{font-size:11.5px;color:var(--ink-faint);margin-top:2px}
+
+.jta{width:100%;border:none;outline:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:15px;line-height:2.0;color:var(--ink);resize:none;caret-color:var(--gold);min-height:300px}
+.jta::placeholder{color:rgba(140,112,85,.38);font-style:italic;font-size:14px}
+.wc{font-size:10px;color:var(--ink-faint);text-align:right;margin-top:8px;opacity:.5}
+
+/* LETTERS */
+.lcard{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:var(--parchment);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.lcard:active{background:var(--gold-pale)}
+.lname{font-size:14px;font-weight:500;color:var(--ink);font-family:'Noto Serif KR',serif}
+.lprev{font-size:12px;color:var(--ink-faint);margin-top:3px}
+.add-btn{width:100%;padding:12px;background:transparent;border:1px dashed rgba(184,137,42,.4);color:var(--gold);border-radius:8px;font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px}
+
+.letter-editor{display:none;margin-top:14px}.letter-editor.on{display:block}
+.l-to{width:100%;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink);padding:6px 0;outline:none;font-style:italic;margin-bottom:12px}
 .l-to::placeholder{color:rgba(140,112,85,.38)}
-.will-blocks{display:flex;flex-direction:column;gap:10px}
-.wb{border:1px solid var(--border);border-radius:5px;overflow:hidden}
-.wb-h{padding:7px 12px;background:var(--parchment);font-size:11.5px;font-weight:500;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
-.wb textarea{width:100%;border:none;outline:none;background:var(--white);padding:9px 12px;font-family:'Noto Serif KR',serif;font-size:13px;line-height:1.9;color:var(--ink);resize:vertical;min-height:65px}
+.btn-row{display:flex;gap:8px;margin-top:10px}
+.btn-row .t-btn{flex:1;padding:10px;font-size:13px;text-align:center}
+
+/* WILL */
+.wb{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+.wb-h{padding:10px 14px;background:var(--parchment);font-size:13px;font-weight:500;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
+.wb textarea{width:100%;border:none;outline:none;background:var(--white);padding:12px 14px;font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.9;color:var(--ink);resize:vertical;min-height:80px}
 .wb textarea::placeholder{color:rgba(140,112,85,.33);font-style:italic}
-.tl-wrap{display:flex;flex-direction:column}
-.tl-decade{display:flex;gap:10px;margin-bottom:10px}
-.tl-label{width:52px;font-size:12px;font-weight:600;color:var(--gold);font-family:'Noto Serif KR',serif;padding-top:3px;flex-shrink:0;text-align:right}
-.tl-ta{width:100%;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:13px;line-height:1.8;color:var(--ink);resize:none;outline:none;padding:2px 0 6px;min-height:50px}
-.tl-ta::placeholder{color:rgba(140,112,85,.35);font-style:italic;font-size:12px}
-.add-decade-btn{background:transparent;border:1px dashed rgba(184,137,42,.35);color:var(--gold);padding:5px 10px;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;align-self:flex-start;margin-top:4px}
-.add-decade-btn:hover{background:var(--gold-pale)}
-.rel-wrap{display:flex;flex-direction:column;gap:8px}
-.rel-item{border:1px solid var(--border);border-radius:5px;overflow:hidden}
-.rel-head{display:flex;gap:8px;align-items:center;padding:7px 12px;background:var(--parchment);border-bottom:1px solid var(--border)}
-.rel-tag{font-size:10px;padding:2px 8px;border-radius:3px;font-weight:500}
-.rel-name-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--ink);outline:none;flex:1}
-.rel-ta{width:100%;border:none;outline:none;background:var(--white);padding:8px 12px;font-family:'Noto Serif KR',serif;font-size:13px;line-height:1.85;color:var(--ink);resize:vertical;min-height:58px}
+
+/* TIMELINE */
+.tl-item{display:flex;gap:12px;margin-bottom:14px}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:60px;flex-shrink:0}
+.tl-label{font-size:12px;font-weight:600;color:var(--gold);font-family:'Noto Serif KR',serif;text-align:center}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin:5px auto;border:2px solid var(--gold-pale)}
+.tl-line{width:1px;background:rgba(184,137,42,.2);flex:1;min-height:20px;margin:0 auto}
+.tl-ta{flex:1;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.85;color:var(--ink);resize:none;outline:none;padding:4px 0 8px;min-height:60px}
+.tl-ta::placeholder{color:rgba(140,112,85,.35);font-style:italic;font-size:13px}
+.add-decade-btn{width:100%;padding:10px;background:transparent;border:1px dashed rgba(184,137,42,.35);color:var(--gold);border-radius:8px;font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:6px}
+
+/* RELATIONS */
+.rel-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+.rel-head{display:flex;gap:8px;align-items:center;padding:10px 14px;background:var(--parchment);border-bottom:1px solid var(--border)}
+.rel-tag{font-size:11px;padding:3px 10px;border-radius:4px;font-weight:500;flex-shrink:0}
+.rel-name-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink);outline:none;flex:1}
+.rel-ta{width:100%;border:none;outline:none;background:var(--white);padding:12px 14px;font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.85;color:var(--ink);resize:vertical;min-height:70px}
 .rel-ta::placeholder{color:rgba(140,112,85,.33);font-style:italic}
-.photo-list{display:flex;flex-direction:column;gap:10px}
-.photo-item{border:1px solid var(--border);border-radius:6px;overflow:hidden}
-.photo-head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--parchment);border-bottom:1px solid var(--border)}
-.photo-date-in{border:none;background:transparent;font-size:12px;color:var(--ink-faint);outline:none;font-family:'Noto Sans KR',sans-serif;width:110px}
-.photo-title-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--ink);outline:none;flex:1;font-weight:500}
-.photo-ta{width:100%;border:none;outline:none;background:var(--white);padding:8px 12px;font-family:'Noto Serif KR',serif;font-size:13px;line-height:1.85;color:var(--ink);resize:vertical;min-height:58px}
+
+/* PHOTOS */
+.photo-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+.photo-head{display:flex;gap:8px;align-items:center;padding:10px 14px;background:var(--parchment);border-bottom:1px solid var(--border)}
+.photo-date-in{border:none;background:transparent;font-size:12px;color:var(--ink-faint);outline:none;font-family:'Noto Sans KR',sans-serif;width:100px}
+.photo-title-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink);outline:none;flex:1;font-weight:500}
+.photo-ta{width:100%;border:none;outline:none;background:var(--white);padding:12px 14px;font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.85;color:var(--ink);resize:vertical;min-height:70px}
 .photo-ta::placeholder{color:rgba(140,112,85,.33);font-style:italic}
-.int-wrap{display:flex;flex-direction:column;gap:10px}
-.int-block{border:1px solid var(--border);border-radius:5px;overflow:hidden}
-.int-h{padding:7px 12px;background:var(--parchment);font-size:11.5px;font-weight:500;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
-.int-ta{width:100%;border:none;outline:none;background:var(--white);padding:9px 12px;font-family:'Noto Serif KR',serif;font-size:13px;line-height:1.9;color:var(--ink);resize:vertical;min-height:65px}
+
+/* INT BLOCKS */
+.int-block{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+.int-h{padding:10px 14px;background:var(--parchment);font-size:13px;font-weight:500;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
+.int-ta{width:100%;border:none;outline:none;background:var(--white);padding:12px 14px;font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.9;color:var(--ink);resize:vertical;min-height:80px}
 .int-ta::placeholder{color:rgba(140,112,85,.33);font-style:italic}
-/* DRIVE STATUS */
-.drive-status{background:rgba(52,168,83,0.1);border-bottom:1px solid rgba(52,168,83,0.18);padding:5px 18px;font-size:11.5px;color:#6bcf8a;display:flex;align-items:center;gap:8px;flex-shrink:0}
-.drive-dot{width:7px;height:7px;border-radius:50%;background:#52a853;flex-shrink:0;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
 /* NOTIF */
-.notif{position:fixed;bottom:18px;right:20px;padding:8px 16px;border-radius:4px;font-size:12px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;display:flex;align-items:center;gap:8px}
+.notif{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap}
 .notif.show{opacity:1}
 .notif.success{background:rgba(26,18,8,.95);color:#6bcf8a;border:1px solid rgba(52,168,83,.35)}
 .notif.saving{background:rgba(26,18,8,.95);color:var(--gold-light);border:1px solid rgba(184,137,42,.35)}
 .notif.error{background:rgba(26,18,8,.95);color:#f08080;border:1px solid rgba(200,60,60,.35)}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(184,137,42,.22);border-radius:2px}
+
+/* IC colors */
 .ic-conf{background:rgba(139,32,32,.1);color:var(--red)}
 .ic-grat{background:rgba(184,137,42,.12);color:var(--gold)}
 .ic-pray{background:rgba(96,80,160,.1);color:var(--purple)}
@@ -129,249 +145,247 @@ body{font-family:'Noto Sans KR',sans-serif;background:#0f0b06;color:var(--ink);h
 .ic-rel{background:rgba(139,32,32,.08);color:var(--red)}
 .ic-ph{background:rgba(30,100,64,.08);color:var(--green)}
 .ic-int{background:rgba(96,80,160,.08);color:var(--purple)}
+
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(184,137,42,.2);border-radius:2px}
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
-  <div class="topbar-title">Confessiones <span>참회록</span></div>
+  <div class="topbar-title">Confessiones <small>참회록</small></div>
   <div class="topbar-right">
-    <span class="today-str" id="todayStr"></span>
-    <button class="t-btn gold" onclick="saveAll()">✦ 저장 + Drive 백업</button>
+    <button class="t-btn gold" onclick="saveAll()">✦ 저장</button>
     <button class="t-btn" onclick="exportAll()">↓ 내보내기</button>
   </div>
 </div>
 
-<!-- DRIVE STATUS BAR -->
-<div class="drive-status">
+<!-- DRIVE STATUS -->
+<div class="drive-bar">
   <div class="drive-dot"></div>
-  <span>Google Drive 연동됨 — aijiakorea@gmail.com &nbsp;|&nbsp; 폴더: 참회록 (Chamhoerok) &nbsp;|&nbsp; 저장 시 자동 백업</span>
+  <span style="font-size:10.5px">Drive 연동 — aijiakorea@gmail.com | 참회록 (Chamhoerok)</span>
 </div>
 
-<div class="app">
-<div class="sidebar">
-  <div class="sb-label">나의 참회록</div>
-  <div class="sb-item active" data-sec="confession" onclick="switchSec('confession',this)"><span class="ic">✦</span>참회와 회한</div>
-  <div class="sb-item" data-sec="gratitude" onclick="switchSec('gratitude',this)"><span class="ic">☀</span>감사와 은혜</div>
-  <div class="sb-item" data-sec="prayer" onclick="switchSec('prayer',this)"><span class="ic">☽</span>기도와 간구</div>
-  <div class="sb-item" data-sec="wisdom" onclick="switchSec('wisdom',this)"><span class="ic">◈</span>삶의 지혜</div>
-  <div class="sb-div"></div>
-  <div class="sb-label">자녀와 유언</div>
-  <div class="sb-item" data-sec="letters" onclick="switchSec('letters',this)"><span class="ic">✉</span>자녀에게</div>
-  <div class="sb-item" data-sec="grandchildren" onclick="switchSec('grandchildren',this)"><span class="ic">✿</span>손자손녀에게</div>
-  <div class="sb-item" data-sec="will" onclick="switchSec('will',this)"><span class="ic">⊟</span>유언 정리</div>
-  <div class="sb-div"></div>
-  <div class="sb-label">삶의 기록</div>
-  <div class="sb-item" data-sec="timeline" onclick="switchSec('timeline',this)"><span class="ic">◷</span>삶의 연대기</div>
-  <div class="sb-item" data-sec="faith" onclick="switchSec('faith',this)"><span class="ic">✟</span>영적 여정</div>
-  <div class="sb-item" data-sec="relations" onclick="switchSec('relations',this)"><span class="ic">❦</span>관계 회복</div>
-  <div class="sb-item" data-sec="photos" onclick="switchSec('photos',this)"><span class="ic">◻</span>사진 기억</div>
-  <div class="sb-item" data-sec="intercession" onclick="switchSec('intercession',this)"><span class="ic">❋</span>중보 기도</div>
-</div>
+<!-- MAIN -->
+<div class="main">
 
-<div class="content">
-  <!-- LEFT: AUGUSTINE -->
-  <div class="panel" style="max-width:46%">
-    <div class="p-head">
-      <div class="p-title">Confessiones — Aurelius Augustinus</div>
-      <div class="p-sub">354–430 AD · 어거스틴의 참회록 (원문 발췌)</div>
+  <!-- SCREEN 1: 어거스틴 -->
+  <div class="screen aug-screen on" id="screen-aug">
+    <div class="aug-book-nav" id="bookNav"></div>
+    <div id="book-1" class="book-content active">
+      <div class="b-heading">Liber I · 제1권</div>
+      <div class="b-sub">찬미와 부르짖음 — 하나님을 향한 영혼의 눈뜸</div>
+      <div class="aug-text">
+        <p class="ch">I. 1 — 위대하신 하나님</p>
+        <p class="drop">"주님은 위대하시고 크게 찬양 받으실 분이십니다. 주님의 권능은 크시며 주님의 지혜는 헤아릴 수 없습니다. 주님께 찬양을 드리기를 원하는 것은 주님이 지으신 인간이옵니다."</p>
+        <div class="hq">"우리의 마음이 주 안에서 안식을 얻기까지 우리 마음은 쉬지 못합니다." — I.1</div>
+        <p>주님을 부르짖는 것이 선한지, 아니면 주님을 아는 것이 선한지 알게 하여 주옵소서.</p>
+        <p class="ch">I. 5 — 영혼의 갈망</p>
+        <p>내 마음이 불안하여 주님의 은총을 구하오니, 주님의 인자하심으로 응답하여 주옵소서. 주님이 부르짖어 내 귀를 여시지 않으면 내가 어떻게 주님을 구하겠습니까?</p>
+      </div>
     </div>
-    <div class="p-body" id="augBody">
-      <div class="book-nav" id="bookNav"></div>
-      <div class="book-content active" id="book-1">
-        <div class="b-heading">Liber I · 제1권</div><div class="b-sub">찬미와 부르짖음 — 하나님을 향한 영혼의 눈뜸</div>
-        <div class="aug">
-          <p class="ch">I. 1 — 위대하신 하나님</p>
-          <p class="drop">"주님은 위대하시고 크게 찬양 받으실 분이십니다. 주님의 권능은 크시며 주님의 지혜는 헤아릴 수 없습니다. 주님께 찬양을 드리기를 원하는 것은 주님이 지으신 인간이옵니다. 이 인간은 자기의 죽음을 가지고 다니며, 자기의 죄의 증거를 가지고 다닙니다."</p>
-          <div class="hq">"우리의 마음이 주 안에서 안식을 얻기까지 우리 마음은 쉬지 못합니다." — I.1</div>
-          <p>주님을 부르짖는 것이 선한지, 아니면 주님을 아는 것이 선한지 알게 하여 주옵소서. 알지 못하고 부를 수 있겠습니까?</p>
-          <p class="ch">I. 5 — 영혼의 갈망</p>
-          <p>내 마음이 불안하여 주님의 은총을 구하오니, 주님의 인자하심으로 응답하여 주옵소서. 주님이 부르짖어 내 귀를 여시지 않으면 내가 어떻게 주님을 구하겠습니까?</p>
-        </div>
+    <div id="book-2" class="book-content">
+      <div class="b-heading">Liber II · 제2권</div>
+      <div class="b-sub">청년의 죄악 — 방황과 욕망의 회상</div>
+      <div class="aug-text">
+        <p class="ch">II. 1 — 청년 시절의 죄</p>
+        <p class="drop">나는 내 청년 시절의 더럽혀짐을 회상하고자 합니다. 그것은 내 영혼이 죄 안에서 썩어가고 있었기 때문입니다. 주님의 아름다움을 사랑하는 것이 아니라, 나는 주님을 떠나 내 자신의 길로 갔습니다.</p>
+        <div class="hq">"나는 사랑하기를 사랑했고, 사랑받기를 갈구했습니다." — II.2</div>
+        <p class="ch">II. 4 — 배 도둑질의 이야기</p>
+        <p>우리 무리들은 밤늦게 거기에 가서 엄청난 양의 배를 흔들어 따서는 돼지에게 던져 주었습니다. 내가 사랑한 것은 배가 아니었습니다. 그것은 범죄 그 자체, 공범들과 함께 악을 행하는 것의 스릴이었습니다.</p>
       </div>
-      <div class="book-content" id="book-2">
-        <div class="b-heading">Liber II · 제2권</div><div class="b-sub">청년의 죄악 — 방황과 욕망의 회상</div>
-        <div class="aug">
-          <p class="ch">II. 1 — 청년 시절의 죄</p>
-          <p class="drop">나는 내 청년 시절의 더럽혀짐을 회상하고자 합니다. 그것은 내 영혼이 죄 안에서 썩어가고 있었기 때문입니다. 주님의 아름다움을 사랑하는 것이 아니라, 나는 주님을 떠나 내 자신의 길로 갔습니다.</p>
-          <div class="hq">"나는 사랑하기를 사랑했고, 사랑받기를 갈구했습니다." — II.2</div>
-          <p class="ch">II. 4 — 배 도둑질의 이야기</p>
-          <p>우리 무리들은 밤늦게 거기에 가서 엄청난 양의 배를 흔들어 따서는 돼지에게 던져 주었습니다. 내가 사랑한 것은 배가 아니었습니다. 그것은 범죄 그 자체, 공범들과 함께 악을 행하는 것의 스릴이었습니다.</p>
-        </div>
+    </div>
+    <div id="book-6" class="book-content">
+      <div class="b-heading">Liber VI · 제6권</div>
+      <div class="b-sub">암브로시우스와 모니카 — 어머니의 눈물</div>
+      <div class="aug-text">
+        <p class="ch">VI. 1 — 어머니의 기도</p>
+        <p class="drop">나의 어머니 모니카는 나를 위해 끊임없이 기도했습니다. 그녀는 눈물로 나를 위해 하나님께 부르짖었습니다. 어느 주교가 그녀에게 말했습니다: "그렇게 많은 눈물의 아들은 결코 멸망하지 않을 것입니다."</p>
+        <div class="hq">"눈물의 아들은 결코 멸망하지 않습니다." — 어느 주교가 모니카에게 한 말</div>
       </div>
-      <div class="book-content" id="book-6">
-        <div class="b-heading">Liber VI · 제6권</div><div class="b-sub">암브로시우스와 모니카 — 어머니의 눈물</div>
-        <div class="aug">
-          <p class="ch">VI. 1 — 어머니의 기도</p>
-          <p class="drop">나의 어머니 모니카는 나를 위해 끊임없이 기도했습니다. 그녀는 눈물로 나를 위해 하나님께 부르짖었습니다. 어느 주교가 그녀에게 말했습니다: "그렇게 많은 눈물의 아들은 결코 멸망하지 않을 것입니다."</p>
-          <div class="hq">"눈물의 아들은 결코 멸망하지 않습니다." — 어느 주교가 모니카에게 한 말</div>
-        </div>
+    </div>
+    <div id="book-8" class="book-content">
+      <div class="b-heading">Liber VIII · 제8권</div>
+      <div class="b-sub">회심 — 밀라노 정원에서의 사건</div>
+      <div class="aug-text">
+        <p class="ch">VIII. 12 — 정원에서의 회심</p>
+        <p class="drop">갑자기 이웃집에서 어린아이의 목소리가 들려왔습니다. "집어 들고 읽어라. 집어 들고 읽어라." 나는 사도 바울의 책을 집어 들고 처음 눈에 띄는 곳을 읽었습니다.</p>
+        <div class="hq">"주님, 저에게 정결함을 주소서. 그러나 아직은 아닙니다." — VIII.7</div>
+        <p>"낮에와 같이 단정히 행하고... 오직 주 예수 그리스도로 옷 입고..." 그 구절이 끝나기 전에 빛이 내 마음에 넘쳐 들어와 의심의 어두움이 모두 사라졌습니다.</p>
       </div>
-      <div class="book-content" id="book-8">
-        <div class="b-heading">Liber VIII · 제8권</div><div class="b-sub">회심 — 밀라노 정원에서의 사건</div>
-        <div class="aug">
-          <p class="ch">VIII. 12 — 정원에서의 회심</p>
-          <p class="drop">갑자기 이웃집에서 어린아이의 목소리가 들려왔습니다. "집어 들고 읽어라. 집어 들고 읽어라." 나는 사도 바울의 책을 집어 들고 처음 눈에 띄는 곳을 읽었습니다.</p>
-          <div class="hq">"주님, 저에게 정결함을 주소서. 그러나 아직은 아닙니다." — VIII.7</div>
-          <p>"낮에와 같이 단정히 행하고... 오직 주 예수 그리스도로 옷 입고..." 그 구절이 끝나기 전에 빛이 내 마음에 넘쳐 들어와 의심의 어두움이 모두 사라졌습니다.</p>
-        </div>
+    </div>
+    <div id="book-9" class="book-content">
+      <div class="b-heading">Liber IX · 제9권</div>
+      <div class="b-sub">모니카의 죽음 — 작별과 평안</div>
+      <div class="aug-text">
+        <p class="ch">IX. 10 — 오스티아에서의 환상</p>
+        <p class="drop">어머니와 나는 오스티아의 창가에 서서 이야기를 나누었습니다. 우리는 함께 영원한 삶에 대해 이야기했고, 내면의 빛을 향해 나아가고 있었습니다.</p>
+        <div class="hq">"만약 육체의 소란이 침묵하고... 그 침묵 속에서 하나님의 말씀이 들린다면 — 그것이 영원한 생명이 아니겠습니까?" — IX.10</div>
+        <p class="ch">IX. 11 — 어머니의 마지막 말</p>
+        <p>"아들아, 이 세상에서 내가 기뻐할 것은 하나도 없다. 세상에 대한 나의 소망은 다 사라졌다."</p>
       </div>
-      <div class="book-content" id="book-9">
-        <div class="b-heading">Liber IX · 제9권</div><div class="b-sub">모니카의 죽음 — 작별과 평안</div>
-        <div class="aug">
-          <p class="ch">IX. 10 — 오스티아에서의 환상</p>
-          <p class="drop">어머니와 나는 오스티아의 창가에 서서 이야기를 나누었습니다. 우리는 함께 영원한 삶에 대해 이야기했고, 내면의 빛을 향해 나아가고 있었습니다.</p>
-          <div class="hq">"만약 육체의 소란이 침묵하고... 그 침묵 속에서 하나님의 말씀이 들린다면 — 그것이 영원한 생명이 아니겠습니까?" — IX.10</div>
-          <p class="ch">IX. 11 — 어머니의 마지막 말</p>
-          <p>"아들아, 이 세상에서 내가 기뻐할 것은 하나도 없다. 세상에 대한 나의 소망은 다 사라졌다."</p>
-        </div>
-      </div>
-      <div class="book-content" id="book-10">
-        <div class="b-heading">Liber X · 제10권</div><div class="b-sub">기억과 하나님 — 영혼 탐구</div>
-        <div class="aug">
-          <p class="ch">X. 27 — 늦은 사랑</p>
-          <p class="drop">너무 늦게 사랑했습니다! 오, 너무도 오래되고 너무도 새로우신 아름다움이여, 너무 늦게 사랑했습니다! 보십시오, 주님은 내 안에 계셨는데 나는 밖에 있었습니다.</p>
-          <div class="hq">"주님이 나를 부르셨고 외치셨으며, 나의 귀를 뚫었습니다. 주님이 빛을 발하셨고 나의 눈먼 것을 몰아내셨습니다." — X.27</div>
-          <p>주님은 나와 함께 계셨으나 나는 주님과 함께 있지 않았습니다.</p>
-        </div>
+    </div>
+    <div id="book-10" class="book-content">
+      <div class="b-heading">Liber X · 제10권</div>
+      <div class="b-sub">기억과 하나님 — 영혼 탐구</div>
+      <div class="aug-text">
+        <p class="ch">X. 27 — 늦은 사랑</p>
+        <p class="drop">너무 늦게 사랑했습니다! 오, 너무도 오래되고 너무도 새로우신 아름다움이여, 너무 늦게 사랑했습니다! 보십시오, 주님은 내 안에 계셨는데 나는 밖에 있었습니다.</p>
+        <div class="hq">"주님이 나를 부르셨고 외치셨으며, 나의 귀를 뚫었습니다. 주님이 빛을 발하셨고 나의 눈먼 것을 몰아내셨습니다." — X.27</div>
+        <p>주님은 나와 함께 계셨으나 나는 주님과 함께 있지 않았습니다.</p>
       </div>
     </div>
   </div>
 
-  <div class="div-bar"></div>
+  <!-- SCREEN 2: 나의 참회록 -->
+  <div class="screen memoir-screen" id="screen-memoir">
+    <div class="section-tabs" id="sectionTabs"></div>
 
-  <!-- RIGHT: MY MEMOIR -->
-  <div class="panel my-panel">
-    <div class="p-head">
-      <div class="p-title">나의 참회록 — My Confessiones</div>
-      <div class="p-sub">주님 앞에 고백하는 나의 이야기</div>
+    <div class="sec on" id="sec-confession">
+      <div class="sec-head"><div class="sec-ic ic-conf">✦</div><div><div class="sec-title">참회와 회한</div><div class="sec-desc">하나님 앞에 내 삶의 죄와 허물을 고백합니다</div></div></div>
+      <textarea class="jta" id="t-confession" placeholder="주님, 저는 이 생을 살아오면서...&#10;&#10;어거스틴이 고백했듯, 저도 돌아보면 후회되는 일들이 있습니다.&#10;사랑해야 했을 사람을 사랑하지 못했던 순간들..."></textarea>
+      <div class="wc" id="wc-confession">0 자</div>
     </div>
-    <div class="p-body">
-      <div class="tabs">
-        <button class="tab active" data-sec="confession" onclick="switchSec('confession',null,this)">✦ 참회</button>
-        <button class="tab" data-sec="gratitude" onclick="switchSec('gratitude',null,this)">☀ 감사</button>
-        <button class="tab" data-sec="prayer" onclick="switchSec('prayer',null,this)">☽ 기도</button>
-        <button class="tab" data-sec="wisdom" onclick="switchSec('wisdom',null,this)">◈ 지혜</button>
-        <button class="tab" data-sec="letters" onclick="switchSec('letters',null,this)">✉ 자녀</button>
-        <button class="tab" data-sec="grandchildren" onclick="switchSec('grandchildren',null,this)">✿ 손자녀</button>
-        <button class="tab" data-sec="will" onclick="switchSec('will',null,this)">⊟ 유언</button>
-        <button class="tab" data-sec="timeline" onclick="switchSec('timeline',null,this)">◷ 연대기</button>
-        <button class="tab" data-sec="faith" onclick="switchSec('faith',null,this)">✟ 영적여정</button>
-        <button class="tab" data-sec="relations" onclick="switchSec('relations',null,this)">❦ 관계</button>
-        <button class="tab" data-sec="photos" onclick="switchSec('photos',null,this)">◻ 사진</button>
-        <button class="tab" data-sec="intercession" onclick="switchSec('intercession',null,this)">❋ 중보</button>
-      </div>
-
-      <div class="ws on" id="sec-confession">
-        <div class="s-head"><div class="s-ic ic-conf">✦</div><div><div class="s-title">참회와 회한</div><div class="s-desc">하나님 앞에 내 삶의 죄와 허물을 고백합니다</div></div></div>
-        <textarea class="jta" id="t-confession" placeholder="주님, 저는 이 생을 살아오면서...&#10;&#10;어거스틴이 고백했듯, 저도 돌아보면 후회되는 일들이 있습니다.&#10;사랑해야 했을 사람을 사랑하지 못했던 순간들,&#10;욕심과 교만으로 하나님의 뜻을 저버렸던 시간들..."></textarea>
-        <div class="wc" id="wc-confession">0 자</div>
-      </div>
-      <div class="ws" id="sec-gratitude">
-        <div class="s-head"><div class="s-ic ic-grat">☀</div><div><div class="s-title">감사와 은혜</div><div class="s-desc">이 생에서 받은 은혜들, 기억하고 싶은 순간들</div></div></div>
-        <textarea class="jta" id="t-gratitude" placeholder="돌이켜보면 감사한 것들이 참 많습니다..."></textarea>
-        <div class="wc" id="wc-gratitude">0 자</div>
-      </div>
-      <div class="ws" id="sec-prayer">
-        <div class="s-head"><div class="s-ic ic-pray">☽</div><div><div class="s-title">기도와 간구</div><div class="s-desc">남은 시간, 그리고 사랑하는 이들을 위한 기도</div></div></div>
-        <textarea class="jta" id="t-prayer" placeholder="하나님 아버지, 이 생의 마지막을 바라보면서..."></textarea>
-        <div class="wc" id="wc-prayer">0 자</div>
-      </div>
-      <div class="ws" id="sec-wisdom">
-        <div class="s-head"><div class="s-ic ic-wisd">◈</div><div><div class="s-title">삶의 지혜</div><div class="s-desc">살아오면서 깨달은 것들, 다음 세대에 전하고 싶은 말</div></div></div>
-        <textarea class="jta" id="t-wisdom" placeholder="내가 살면서 배운 가장 중요한 것은..."></textarea>
-        <div class="wc" id="wc-wisdom">0 자</div>
-      </div>
-      <div class="ws" id="sec-letters">
-        <div class="s-head"><div class="s-ic ic-lett">✉</div><div><div class="s-title">자녀에게 전하는 편지</div><div class="s-desc">한 명 한 명에게, 마음 깊은 곳의 말들</div></div></div>
-        <div class="letter-list" id="letterList"></div>
-        <button class="add-btn" onclick="addLetter('letters')">+ 편지 추가</button>
-        <div class="led" id="letterEd">
-          <input class="l-to" id="letterTo" placeholder="받는 이: 예) 사랑하는 아들 민준에게...">
-          <textarea class="jta" id="t-letter" style="min-height:220px" placeholder="사랑하는 아이에게..."></textarea>
-          <div style="display:flex;gap:7px;flex-shrink:0;margin-top:4px">
-            <button class="t-btn" onclick="saveLetter()">저장</button>
-            <button class="t-btn" onclick="closeLetter()">닫기</button>
-          </div>
+    <div class="sec" id="sec-gratitude">
+      <div class="sec-head"><div class="sec-ic ic-grat">☀</div><div><div class="sec-title">감사와 은혜</div><div class="sec-desc">이 생에서 받은 은혜들, 기억하고 싶은 순간들</div></div></div>
+      <textarea class="jta" id="t-gratitude" placeholder="돌이켜보면 감사한 것들이 참 많습니다..."></textarea>
+      <div class="wc" id="wc-gratitude">0 자</div>
+    </div>
+    <div class="sec" id="sec-prayer">
+      <div class="sec-head"><div class="sec-ic ic-pray">☽</div><div><div class="sec-title">기도와 간구</div><div class="sec-desc">남은 시간, 사랑하는 이들을 위한 기도</div></div></div>
+      <textarea class="jta" id="t-prayer" placeholder="하나님 아버지, 이 생의 마지막을 바라보면서..."></textarea>
+      <div class="wc" id="wc-prayer">0 자</div>
+    </div>
+    <div class="sec" id="sec-wisdom">
+      <div class="sec-head"><div class="sec-ic ic-wisd">◈</div><div><div class="sec-title">삶의 지혜</div><div class="sec-desc">살아오면서 깨달은 것들, 다음 세대에 전할 말</div></div></div>
+      <textarea class="jta" id="t-wisdom" placeholder="내가 살면서 배운 가장 중요한 것은..."></textarea>
+      <div class="wc" id="wc-wisdom">0 자</div>
+    </div>
+    <div class="sec" id="sec-letters">
+      <div class="sec-head"><div class="sec-ic ic-lett">✉</div><div><div class="sec-title">자녀에게</div><div class="sec-desc">한 명 한 명에게, 마음 깊은 곳의 말들</div></div></div>
+      <div id="letterList"></div>
+      <button class="add-btn" onclick="addLetter('letters')">+ 편지 추가</button>
+      <div class="letter-editor" id="letterEd">
+        <input class="l-to" id="letterTo" placeholder="받는 이: 예) 사랑하는 아들 민준에게...">
+        <textarea class="jta" id="t-letter" style="min-height:240px" placeholder="사랑하는 아이에게...&#10;&#10;아버지로서, 어머니로서 하지 못했던 말들..."></textarea>
+        <div class="btn-row">
+          <button class="t-btn gold" onclick="saveLetter()">저장</button>
+          <button class="t-btn" onclick="closeLetter()">닫기</button>
         </div>
       </div>
-      <div class="ws" id="sec-grandchildren">
-        <div class="s-head"><div class="s-ic ic-grat">✿</div><div><div class="s-title">손자손녀에게</div><div class="s-desc">다음 세대에게 남기는 따뜻한 이야기</div></div></div>
-        <div class="letter-list" id="grandList"></div>
-        <button class="add-btn" onclick="addLetter('grand')">+ 편지 추가</button>
-        <div class="led" id="grandEd">
-          <input class="l-to" id="grandTo" placeholder="받는 이: 예) 사랑하는 손자 지호에게...">
-          <textarea class="jta" id="t-grand" style="min-height:220px" placeholder="할아버지/할머니가 너에게..."></textarea>
-          <div style="display:flex;gap:7px;flex-shrink:0;margin-top:4px">
-            <button class="t-btn" onclick="saveGrand()">저장</button>
-            <button class="t-btn" onclick="closeGrand()">닫기</button>
-          </div>
+    </div>
+    <div class="sec" id="sec-grandchildren">
+      <div class="sec-head"><div class="sec-ic ic-grat">✿</div><div><div class="sec-title">손자손녀에게</div><div class="sec-desc">다음 세대에게 남기는 따뜻한 이야기</div></div></div>
+      <div id="grandList"></div>
+      <button class="add-btn" onclick="addLetter('grand')">+ 편지 추가</button>
+      <div class="letter-editor" id="grandEd">
+        <input class="l-to" id="grandTo" placeholder="받는 이: 예) 사랑하는 손자 지호에게...">
+        <textarea class="jta" id="t-grand" style="min-height:240px" placeholder="할아버지/할머니가 너에게..."></textarea>
+        <div class="btn-row">
+          <button class="t-btn gold" onclick="saveGrand()">저장</button>
+          <button class="t-btn" onclick="closeGrand()">닫기</button>
         </div>
       </div>
-      <div class="ws" id="sec-will">
-        <div class="s-head"><div class="s-ic ic-will">⊟</div><div><div class="s-title">유언 정리</div><div class="s-desc">사랑하는 이들에게 남기는 마지막 뜻</div></div></div>
-        <div class="will-blocks">
-          <div class="wb"><div class="wb-h">✟ 나의 신앙 고백</div><textarea id="w-faith" placeholder="나는 예수 그리스도를 나의 주님과 구원자로 믿으며..."></textarea></div>
-          <div class="wb"><div class="wb-h">❤ 가족에게 남기는 말</div><textarea id="w-family" placeholder="사랑하는 배우자에게, 자녀들에게..."></textarea></div>
-          <div class="wb"><div class="wb-h">◻ 재산 및 물건의 정리</div><textarea id="w-assets" placeholder="보관된 중요한 문서들의 위치..."></textarea></div>
-          <div class="wb"><div class="wb-h">✿ 장례에 대한 바람</div><textarea id="w-funeral" placeholder="장례는 간소하게, 찬양은..."></textarea></div>
-          <div class="wb"><div class="wb-h">◈ 정신적 유산</div><textarea id="w-legacy" placeholder="내가 살면서 지키려 했던 가치들..."></textarea></div>
-          <div class="wb"><div class="wb-h">⊟ 부탁과 당부</div><textarea id="w-wish" placeholder="이것만큼은 꼭 지켜주기 바랍니다..."></textarea></div>
-        </div>
-      </div>
-      <div class="ws" id="sec-timeline">
-        <div class="s-head"><div class="s-ic ic-tl">◷</div><div><div class="s-title">삶의 연대기</div><div class="s-desc">10년 단위로 돌아보는 나의 이야기</div></div></div>
-        <div class="tl-wrap" id="tlWrap"></div>
-        <button class="add-decade-btn" onclick="addDecade()">+ 시기 추가</button>
-      </div>
-      <div class="ws" id="sec-faith">
-        <div class="s-head"><div class="s-ic ic-conf">✟</div><div><div class="s-title">영적 여정 기록</div><div class="s-desc">신앙의 위기, 회복, 하나님을 만난 결정적 순간들</div></div></div>
-        <div class="int-wrap">
-          <div class="int-block"><div class="int-h">✟ 처음 믿음을 갖게 된 계기</div><textarea class="int-ta" id="f-begin" placeholder="언제, 어떻게 예수님을 만나게 되었는지..."></textarea></div>
-          <div class="int-block"><div class="int-h">◈ 신앙의 위기와 질문들</div><textarea class="int-ta" id="f-crisis" placeholder="하나님을 의심했던 순간들..."></textarea></div>
-          <div class="int-block"><div class="int-h">☀ 회복의 순간들</div><textarea class="int-ta" id="f-restore" placeholder="다시 하나님께 돌아왔던 계기..."></textarea></div>
-          <div class="int-block"><div class="int-h">✦ 결정적인 영적 만남</div><textarea class="int-ta" id="f-encounter" placeholder="하나님의 임재를 느꼈던 순간들..."></textarea></div>
-          <div class="int-block"><div class="int-h">☽ 지금 나의 신앙</div><textarea class="int-ta" id="f-now" placeholder="인생 말년에 이르러 나의 신앙은..."></textarea></div>
-        </div>
-      </div>
-      <div class="ws" id="sec-relations">
-        <div class="s-head"><div class="s-ic ic-rel">❦</div><div><div class="s-title">관계 회복 일지</div><div class="s-desc">화해하고 싶은 사람, 용서, 감사 전하지 못한 사람들</div></div></div>
-        <div class="rel-wrap" id="relWrap"></div>
-        <button class="add-btn" onclick="addRelation()" style="margin-top:8px">+ 관계 추가</button>
-      </div>
-      <div class="ws" id="sec-photos">
-        <div class="s-head"><div class="s-ic ic-ph">◻</div><div><div class="s-title">사진 기억 메모</div><div class="s-desc">소중한 사진들에 얽힌 이야기와 의미</div></div></div>
-        <div class="photo-list" id="photoList"></div>
-        <button class="add-btn" onclick="addPhoto()" style="margin-top:4px">+ 기억 추가</button>
-      </div>
-      <div class="ws" id="sec-intercession">
-        <div class="s-head"><div class="s-ic ic-int">❋</div><div><div class="s-title">중보 기도</div><div class="s-desc">자녀, 교회, 민족, 세상을 위한 기도</div></div></div>
-        <div class="int-wrap">
-          <div class="int-block"><div class="int-h">❤ 자녀와 후손을 위한 기도</div><textarea class="int-ta" id="i-family" placeholder="자녀들의 이름을 부르며 드리는 기도..."></textarea></div>
-          <div class="int-block"><div class="int-h">✟ 교회와 신앙 공동체를 위한 기도</div><textarea class="int-ta" id="i-church" placeholder="한국 교회를 위해, 다음 세대 믿음을 위해..."></textarea></div>
-          <div class="int-block"><div class="int-h">◈ 대한민국과 민족을 위한 기도</div><textarea class="int-ta" id="i-nation" placeholder="이 나라의 젊은이들을 위해..."></textarea></div>
-          <div class="int-block"><div class="int-h">☀ 선교지와 열방을 위한 기도</div><textarea class="int-ta" id="i-mission" placeholder="아직 복음을 듣지 못한 민족들을 위해..."></textarea></div>
-          <div class="int-block"><div class="int-h">❋ 마지막으로 드리는 기도</div><textarea class="int-ta" id="i-final" placeholder="주님, 이 생을 마치면서 드리는 마지막 기도..."></textarea></div>
-        </div>
-      </div>
+    </div>
+    <div class="sec" id="sec-will">
+      <div class="sec-head"><div class="sec-ic ic-will">⊟</div><div><div class="sec-title">유언 정리</div><div class="sec-desc">사랑하는 이들에게 남기는 마지막 뜻</div></div></div>
+      <div class="wb"><div class="wb-h">✟ 나의 신앙 고백</div><textarea id="w-faith" placeholder="나는 예수 그리스도를 나의 주님과 구원자로 믿으며..."></textarea></div>
+      <div class="wb"><div class="wb-h">❤ 가족에게 남기는 말</div><textarea id="w-family" placeholder="사랑하는 배우자에게, 자녀들에게..."></textarea></div>
+      <div class="wb"><div class="wb-h">◻ 재산 및 물건의 정리</div><textarea id="w-assets" placeholder="보관된 중요한 문서들의 위치..."></textarea></div>
+      <div class="wb"><div class="wb-h">✿ 장례에 대한 바람</div><textarea id="w-funeral" placeholder="장례는 간소하게, 찬양은...&#10;묘비에 새기고 싶은 말..."></textarea></div>
+      <div class="wb"><div class="wb-h">◈ 정신적 유산</div><textarea id="w-legacy" placeholder="내가 살면서 지키려 했던 가치들..."></textarea></div>
+      <div class="wb"><div class="wb-h">⊟ 부탁과 당부</div><textarea id="w-wish" placeholder="이것만큼은 꼭 지켜주기 바랍니다..."></textarea></div>
+    </div>
+    <div class="sec" id="sec-timeline">
+      <div class="sec-head"><div class="sec-ic ic-tl">◷</div><div><div class="sec-title">삶의 연대기</div><div class="sec-desc">시기별로 돌아보는 나의 이야기</div></div></div>
+      <div id="tlWrap"></div>
+      <button class="add-decade-btn" onclick="addDecade()">+ 시기 추가</button>
+    </div>
+    <div class="sec" id="sec-faith">
+      <div class="sec-head"><div class="sec-ic ic-conf">✟</div><div><div class="sec-title">영적 여정</div><div class="sec-desc">신앙의 위기, 회복, 하나님을 만난 순간들</div></div></div>
+      <div class="int-block"><div class="int-h">✟ 처음 믿음을 갖게 된 계기</div><textarea class="int-ta" id="f-begin" placeholder="언제, 어떻게 예수님을 만나게 되었는지..."></textarea></div>
+      <div class="int-block"><div class="int-h">◈ 신앙의 위기와 질문들</div><textarea class="int-ta" id="f-crisis" placeholder="하나님을 의심했던 순간들..."></textarea></div>
+      <div class="int-block"><div class="int-h">☀ 회복의 순간들</div><textarea class="int-ta" id="f-restore" placeholder="다시 하나님께 돌아왔던 계기..."></textarea></div>
+      <div class="int-block"><div class="int-h">✦ 결정적인 영적 만남</div><textarea class="int-ta" id="f-encounter" placeholder="하나님의 임재를 느꼈던 순간들..."></textarea></div>
+      <div class="int-block"><div class="int-h">☽ 지금 나의 신앙</div><textarea class="int-ta" id="f-now" placeholder="인생 말년에 이르러 나의 신앙은..."></textarea></div>
+    </div>
+    <div class="sec" id="sec-relations">
+      <div class="sec-head"><div class="sec-ic ic-rel">❦</div><div><div class="sec-title">관계 회복 일지</div><div class="sec-desc">화해, 용서, 감사 전하지 못한 사람들</div></div></div>
+      <div id="relWrap"></div>
+      <button class="add-btn" onclick="addRelation()" style="margin-top:4px">+ 관계 추가</button>
+    </div>
+    <div class="sec" id="sec-photos">
+      <div class="sec-head"><div class="sec-ic ic-ph">◻</div><div><div class="sec-title">사진 기억 메모</div><div class="sec-desc">소중한 사진들에 얽힌 이야기</div></div></div>
+      <div id="photoList"></div>
+      <button class="add-btn" onclick="addPhoto()" style="margin-top:4px">+ 기억 추가</button>
+    </div>
+    <div class="sec" id="sec-intercession">
+      <div class="sec-head"><div class="sec-ic ic-int">❋</div><div><div class="sec-title">중보 기도</div><div class="sec-desc">자녀, 교회, 민족, 세상을 위한 기도</div></div></div>
+      <div class="int-block"><div class="int-h">❤ 자녀와 후손을 위한 기도</div><textarea class="int-ta" id="i-family" placeholder="자녀들의 이름을 부르며 드리는 기도..."></textarea></div>
+      <div class="int-block"><div class="int-h">✟ 교회와 신앙 공동체를 위한 기도</div><textarea class="int-ta" id="i-church" placeholder="한국 교회를 위해, 다음 세대 믿음을 위해..."></textarea></div>
+      <div class="int-block"><div class="int-h">◈ 대한민국과 민족을 위한 기도</div><textarea class="int-ta" id="i-nation" placeholder="이 나라의 젊은이들을 위해..."></textarea></div>
+      <div class="int-block"><div class="int-h">☀ 선교지와 열방을 위한 기도</div><textarea class="int-ta" id="i-mission" placeholder="아직 복음을 듣지 못한 민족들을 위해..."></textarea></div>
+      <div class="int-block"><div class="int-h">❋ 마지막으로 드리는 기도</div><textarea class="int-ta" id="i-final" placeholder="주님, 이 생을 마치면서 드리는 마지막 기도..."></textarea></div>
     </div>
   </div>
+
+  <!-- SCREEN 3: 설정 -->
+  <div class="screen" id="screen-setting" style="background:var(--white);padding:20px">
+    <div style="font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)">설정 및 정보</div>
+    <div style="background:rgba(52,168,83,0.08);border:1px solid rgba(52,168,83,0.2);border-radius:10px;padding:14px 16px;margin-bottom:14px">
+      <div style="font-size:13px;font-weight:500;color:#4a9a6a;margin-bottom:6px">☁ Google Drive 연동 상태</div>
+      <div style="font-size:12px;color:var(--ink-light);line-height:1.7">계정: aijiakorea@gmail.com<br>폴더: 참회록 (Chamhoerok)<br>저장 시 자동 백업됩니다</div>
+    </div>
+    <div style="background:var(--parchment);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px">
+      <div style="font-size:13px;font-weight:500;color:var(--ink-light);margin-bottom:6px">📱 앱 링크</div>
+      <div style="font-size:12px;color:var(--ink-light);word-break:break-all;margin-bottom:8px">https://aijiakorea-svg.github.io/chamhoerok/</div>
+      <button class="t-btn" onclick="copyLink()" style="font-size:12px;padding:7px 14px">링크 복사</button>
+    </div>
+    <div style="background:var(--parchment);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px">
+      <div style="font-size:13px;font-weight:500;color:var(--ink-light);margin-bottom:8px">📄 내보내기</div>
+      <button class="t-btn gold" onclick="exportAll()" style="width:100%;padding:10px;font-size:13px">전체 내용 내보내기 (.txt)</button>
+    </div>
+    <div style="font-size:11px;color:var(--ink-faint);text-align:center;margin-top:20px;line-height:1.8">
+      참회록 앱 · 2026<br>
+      Confessiones — Aurelius Augustinus (354–430 AD)
+    </div>
+  </div>
+
 </div>
-</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="bnav-item" id="bnav-aug" onclick="switchScreen('aug')">
+    <span class="bic">📖</span>어거스틴
+  </button>
+  <button class="bnav-item active" id="bnav-memoir" onclick="switchScreen('memoir')">
+    <span class="bic">✦</span>나의 참회록
+  </button>
+  <button class="bnav-item" id="bnav-setting" onclick="switchScreen('setting')">
+    <span class="bic">⚙</span>설정
+  </button>
+</nav>
 
 <div class="notif" id="notif"></div>
 
 <script>
-// ── CONFIG (Google Drive 폴더 ID 내장) ──
 const DRIVE_FOLDER_ID = '1yGIpocRA7HNUX5KLApP58RK8MRknxLH9';
-const DRIVE_FOLDER_NAME = '참회록 (Chamhoerok)';
-const DRIVE_OWNER = 'aijiakorea@gmail.com';
 
-// ── DATE ──
-document.getElementById('todayStr').textContent =
-  new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'});
+// DATE
+const todayKR = new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'});
 
-// ── AUGUSTINE NAV ──
+// ── SCREEN SWITCH ──
+function switchScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('on');
+  document.getElementById('bnav-'+name).classList.add('active');
+  // memoir 첫 진입 시 첫 탭 활성화
+  if(name==='memoir' && !document.querySelector('.stab')){buildSectionTabs();}
+  window.scrollTo(0,0);
+}
+
+// ── AUGUSTINE BOOK NAV ──
 const books=[{id:'1',label:'제1권'},{id:'2',label:'제2권'},{id:'6',label:'제6권'},{id:'8',label:'제8권'},{id:'9',label:'제9권'},{id:'10',label:'제10권'}];
 const bnav=document.getElementById('bookNav');
 books.forEach((b,i)=>{
@@ -383,38 +397,51 @@ books.forEach((b,i)=>{
     document.querySelectorAll('.book-content').forEach(x=>x.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('book-'+b.id).classList.add('active');
-    document.getElementById('augBody').scrollTop=0;
+    window.scrollTo(0,0);
   };
   bnav.appendChild(btn);
 });
 
-// ── SECTION SWITCH ──
-function switchSec(sec,sbEl,tabEl){
-  document.querySelectorAll('.ws').forEach(s=>s.classList.remove('on'));
-  document.getElementById('sec-'+sec).classList.add('on');
-  if(sbEl){
-    document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
-    sbEl.classList.add('active');
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    const tab=document.querySelector('.tab[data-sec="'+sec+'"]');
-    if(tab) tab.classList.add('active');
-  }
-  if(tabEl){
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    tabEl.classList.add('active');
-    document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
-    const sb=document.querySelector('.sb-item[data-sec="'+sec+'"]');
-    if(sb) sb.classList.add('active');
-  }
+// ── SECTION TABS ──
+const sections=[
+  {id:'confession',label:'✦ 참회'},
+  {id:'gratitude',label:'☀ 감사'},
+  {id:'prayer',label:'☽ 기도'},
+  {id:'wisdom',label:'◈ 지혜'},
+  {id:'letters',label:'✉ 자녀'},
+  {id:'grandchildren',label:'✿ 손자녀'},
+  {id:'will',label:'⊟ 유언'},
+  {id:'timeline',label:'◷ 연대기'},
+  {id:'faith',label:'✟ 영적여정'},
+  {id:'relations',label:'❦ 관계'},
+  {id:'photos',label:'◻ 사진'},
+  {id:'intercession',label:'❋ 중보'},
+];
+function buildSectionTabs(){
+  const bar=document.getElementById('sectionTabs');
+  sections.forEach((s,i)=>{
+    const btn=document.createElement('button');
+    btn.className='stab'+(i===0?' active':'');
+    btn.textContent=s.label;
+    btn.onclick=()=>switchSection(s.id, btn);
+    bar.appendChild(btn);
+  });
+}
+function switchSection(id, tabEl){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.getElementById('sec-'+id).classList.add('on');
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  if(tabEl) tabEl.classList.add('active');
+  // 탭이 보이도록 스크롤
+  if(tabEl) tabEl.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  window.scrollTo(0,52);
 }
 
 // ── WORD COUNT ──
 ['confession','gratitude','prayer','wisdom'].forEach(id=>{
   const ta=document.getElementById('t-'+id);
   const wc=document.getElementById('wc-'+id);
-  if(ta&&wc) ta.addEventListener('input',()=>{
-    wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';
-  });
+  if(ta&&wc) ta.addEventListener('input',()=>{wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';});
 });
 
 // ── LETTERS ──
@@ -423,21 +450,23 @@ function renderLetterList(arr,listId,openFn){
   const list=document.getElementById(listId); list.innerHTML='';
   arr.forEach((l,i)=>{
     const card=document.createElement('div'); card.className='lcard';
-    const prev=l.content?(l.content.substring(0,28).replace(/\n/g,' ')+'...'):'편지를 작성해 주세요';
-    card.innerHTML=`<div><div class="lname">${l.to}</div><div class="lprev">${prev}</div></div><span style="color:var(--gold);font-size:11px">편집 →</span>`;
+    const prev=l.content?(l.content.substring(0,30).replace(/\n/g,' ')+'...'):'편지를 작성해 주세요';
+    card.innerHTML=`<div><div class="lname">${l.to}</div><div class="lprev">${prev}</div></div><span style="color:var(--gold);font-size:13px">→</span>`;
     card.onclick=()=>openFn(i); list.appendChild(card);
   });
 }
 function addLetter(type){
-  const ed=document.getElementById(type==='letters'?'letterEd':'grandEd');
-  const toIn=document.getElementById(type==='letters'?'letterTo':'grandTo');
-  const ta=document.getElementById(type==='letters'?'t-letter':'t-grand');
-  toIn.value=''; ta.value=''; ed.classList.add('on'); toIn.focus();
+  const isL=type==='letters';
+  const ed=document.getElementById(isL?'letterEd':'grandEd');
+  document.getElementById(isL?'letterTo':'grandTo').value='';
+  document.getElementById(isL?'t-letter':'t-grand').value='';
+  ed.classList.add('on');
+  document.getElementById(isL?'letterTo':'grandTo').focus();
 }
 function openLetterByIdx(i){ const l=letters[i]; document.getElementById('letterTo').value=l.to; document.getElementById('t-letter').value=l.content||''; document.getElementById('letterEd').classList.add('on'); }
 function openGrandByIdx(i){ const l=grandLetters[i]; document.getElementById('grandTo').value=l.to; document.getElementById('t-grand').value=l.content||''; document.getElementById('grandEd').classList.add('on'); }
-function saveLetter(){ const to=document.getElementById('letterTo').value.trim(); const content=document.getElementById('t-letter').value; if(!to) return; const idx=letters.findIndex(l=>l.to===to); if(idx>=0) letters[idx].content=content; else letters.push({to,content}); renderLetterList(letters,'letterList',openLetterByIdx); }
-function saveGrand(){ const to=document.getElementById('grandTo').value.trim(); const content=document.getElementById('t-grand').value; if(!to) return; const idx=grandLetters.findIndex(l=>l.to===to); if(idx>=0) grandLetters[idx].content=content; else grandLetters.push({to,content}); renderLetterList(grandLetters,'grandList',openGrandByIdx); }
+function saveLetter(){ const to=document.getElementById('letterTo').value.trim(); const content=document.getElementById('t-letter').value; if(!to) return; const idx=letters.findIndex(l=>l.to===to); if(idx>=0) letters[idx].content=content; else letters.push({to,content}); renderLetterList(letters,'letterList',openLetterByIdx); showNotif('편지 저장됨','success'); }
+function saveGrand(){ const to=document.getElementById('grandTo').value.trim(); const content=document.getElementById('t-grand').value; if(!to) return; const idx=grandLetters.findIndex(l=>l.to===to); if(idx>=0) grandLetters[idx].content=content; else grandLetters.push({to,content}); renderLetterList(grandLetters,'grandList',openGrandByIdx); showNotif('편지 저장됨','success'); }
 function closeLetter(){ document.getElementById('letterEd').classList.remove('on'); }
 function closeGrand(){ document.getElementById('grandEd').classList.remove('on'); }
 
@@ -447,13 +476,13 @@ let tlData={};
 function renderTimeline(){
   const wrap=document.getElementById('tlWrap'); wrap.innerHTML='';
   decades.forEach((d,i)=>{
-    const row=document.createElement('div'); row.className='tl-decade';
-    row.innerHTML=`<div class="tl-label">${d.label}</div><div style="flex:1"><div style="display:flex;gap:8px;align-items:flex-start"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;border:2px solid var(--gold-pale)"></div>${i<decades.length-1?'<div style="width:1px;background:rgba(184,137,42,.2);flex:1;min-height:28px;margin:2px 0"></div>':''}</div><textarea class="tl-ta" data-key="tl-${i}" placeholder="${d.hint}">${tlData['tl-'+i]||''}</textarea></div></div>`;
+    const row=document.createElement('div'); row.className='tl-item';
+    row.innerHTML=`<div class="tl-left"><div class="tl-label">${d.label}</div><div class="tl-dot"></div>${i<decades.length-1?'<div class="tl-line"></div>':''}</div><textarea class="tl-ta" data-key="tl-${i}" placeholder="${d.hint}">${tlData['tl-'+i]||''}</textarea>`;
     wrap.appendChild(row);
     row.querySelector('textarea').addEventListener('input',e=>{tlData[e.target.dataset.key]=e.target.value;});
   });
 }
-function addDecade(){ const label=prompt('시기 이름 입력',''); if(label){decades.push({label,hint:'이 시기의 이야기들...'});renderTimeline();} }
+function addDecade(){ const label=prompt('시기 이름 입력 (예: 해외생활)',''); if(label){decades.push({label,hint:'이 시기의 이야기들...'});renderTimeline();} }
 
 // ── RELATIONS ──
 let relations=[];
@@ -499,162 +528,118 @@ function getAllData(){
 }
 
 function buildText(d){
-  const dt=new Date().toLocaleDateString('ko-KR');
-  let o='╔══════════════════════════════════════════╗\n║          나  의  참  회  록              ║\n╚══════════════════════════════════════════╝\n기록일: '+dt+'\n\n';
+  let o='╔══════════════════════════════════════════╗\n║          나  의  참  회  록              ║\n╚══════════════════════════════════════════╝\n기록일: '+todayKR+'\n\n';
   [['참회와 회한',d.confession],['감사와 은혜',d.gratitude],['기도와 간구',d.prayer],['삶의 지혜',d.wisdom]].forEach(([t,v])=>{if(v&&v.trim())o+='\n▣ '+t+'\n'+'─'.repeat(44)+'\n'+v+'\n';});
-  if(d.faith){const fm={begin:'믿음의 시작',crisis:'신앙의 위기',restore:'회복',encounter:'결정적 만남',now:'지금의 신앙'};Object.entries(d.faith).forEach(([k,v])=>{if(v&&v.trim())o+='\n[영적여정-'+(fm[k]||k)+']\n'+v+'\n';});}
+  if(d.faith){Object.entries(d.faith).forEach(([k,v])=>{if(v&&v.trim())o+='\n[영적여정]\n'+v+'\n';});}
   decades.forEach((dec,i)=>{const v=d.tlData['tl-'+i];if(v&&v.trim())o+='\n[연대기-'+dec.label+']\n'+v+'\n';});
   if(d.relations)d.relations.forEach(r=>{if(r.content)o+='\n[관계-'+r.type+'-'+r.name+']\n'+r.content+'\n';});
   o+='\n\n╔══════════════════════════════════════════╗\n║          유  언  정  리                 ║\n╚══════════════════════════════════════════╝\n';
-  if(d.will){const wm={faith:'신앙고백',family:'가족에게',assets:'재산정리',funeral:'장례바람',legacy:'정신적유산',wish:'부탁과당부'};Object.entries(d.will).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+(wm[k]||k)+']\n'+v+'\n';});}
+  if(d.will)Object.entries(d.will).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+k+']\n'+v+'\n';});
   o+='\n\n╔══════════════════════════════════════════╗\n║          편  지  모  음                 ║\n╚══════════════════════════════════════════╝\n';
   if(d.letters)d.letters.forEach(l=>{if(l.content)o+='\n▣ '+l.to+'\n'+'─'.repeat(44)+'\n'+l.content+'\n';});
   if(d.grandLetters)d.grandLetters.forEach(l=>{if(l.content)o+='\n▣ '+l.to+'\n'+'─'.repeat(44)+'\n'+l.content+'\n';});
   o+='\n\n╔══════════════════════════════════════════╗\n║          중  보  기  도                 ║\n╚══════════════════════════════════════════╝\n';
-  if(d.intercession){const im={family:'가족을위해',church:'교회를위해',nation:'나라를위해',mission:'열방을위해',final:'마지막기도'};Object.entries(d.intercession).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+(im[k]||k)+']\n'+v+'\n';});}
+  if(d.intercession)Object.entries(d.intercession).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+k+']\n'+v+'\n';});
   return o;
 }
 
-// ── GOOGLE DRIVE SAVE ──
-// Claude가 이미 Drive에 연결되어 있으므로,
-// 저장 시 Claude API를 통해 Drive에 파일을 업로드합니다.
-// 앱 내에서는 저장 내용을 준비하고 Claude에게 전달하는 방식을 사용합니다.
-
-async function saveToDrive(textContent){
-  // Google Drive API — multipart upload
-  // 토큰은 Google Identity Services (GSI) 팝업으로 받습니다
-  const token = await getGoogleToken();
+// ── GOOGLE DRIVE ──
+async function saveToDrive(text){
+  const token=await getGoogleToken();
   if(!token) return false;
-
-  const date = new Date().toISOString().slice(0,10);
-  const fileName = '나의참회록_' + date + '.txt';
-
-  // Search for existing file to update instead of creating new
   try{
-    const searchRes = await fetch(
-      `https://www.googleapis.com/drive/v3/files?q=name+contains+'나의참회록'` +
-      `+and+'${DRIVE_FOLDER_ID}'+in+parents+and+trashed=false` +
-      `&orderBy=modifiedTime+desc&pageSize=1`,
-      {headers:{'Authorization':'Bearer '+token}}
-    );
-    const searchData = await searchRes.json();
-    const existingFile = searchData.files && searchData.files[0];
-
-    if(existingFile){
-      // UPDATE existing file
-      const res = await fetch(
-        `https://www.googleapis.com/upload/drive/v3/files/${existingFile.id}?uploadType=media`,
-        {method:'PATCH', headers:{'Authorization':'Bearer '+token,'Content-Type':'text/plain; charset=utf-8'}, body:textContent}
-      );
-      return res.ok;
+    const searchRes=await fetch(`https://www.googleapis.com/drive/v3/files?q=name+contains+'나의참회록'+and+'${DRIVE_FOLDER_ID}'+in+parents+and+trashed=false&orderBy=modifiedTime+desc&pageSize=1`,{headers:{'Authorization':'Bearer '+token}});
+    const sd=await searchRes.json();
+    const ex=sd.files&&sd.files[0];
+    if(ex){
+      const r=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${ex.id}?uploadType=media`,{method:'PATCH',headers:{'Authorization':'Bearer '+token,'Content-Type':'text/plain; charset=utf-8'},body:text});
+      return r.ok;
     } else {
-      // CREATE new file
-      const metadata = {name:fileName, parents:[DRIVE_FOLDER_ID], mimeType:'text/plain'};
-      const boundary = 'chamhoerok_boundary_2026';
-      const body = '--'+boundary+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+
-        JSON.stringify(metadata)+'\r\n--'+boundary+'\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n'+
-        textContent+'\r\n--'+boundary+'--';
-      const res = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',
-        {method:'POST', headers:{'Authorization':'Bearer '+token,'Content-Type':'multipart/related; boundary='+boundary}, body});
-      return res.ok;
+      const meta={name:'나의참회록_'+new Date().toISOString().slice(0,10)+'.txt',parents:[DRIVE_FOLDER_ID],mimeType:'text/plain'};
+      const bd='--b\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify(meta)+'\r\n--b\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n'+text+'\r\n--b--';
+      const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'multipart/related; boundary=b'},body:bd});
+      return r.ok;
     }
-  }catch(e){ return false; }
+  }catch(e){return false;}
 }
 
-// Google Identity Services — 팝업 로그인
 function getGoogleToken(){
-  return new Promise((resolve)=>{
-    const stored = sessionStorage.getItem('g_token');
-    const exp = parseInt(sessionStorage.getItem('g_token_exp')||'0');
-    if(stored && Date.now() < exp){ resolve(stored); return; }
-
-    // Load GSI if not loaded
-    if(!window.google || !window.google.accounts){
+  return new Promise(resolve=>{
+    const t=sessionStorage.getItem('g_token');
+    const exp=parseInt(sessionStorage.getItem('g_token_exp')||'0');
+    if(t&&Date.now()<exp){resolve(t);return;}
+    if(!window.google||!window.google.accounts){
       const s=document.createElement('script');
       s.src='https://accounts.google.com/gsi/client';
-      s.onload=()=>doTokenRequest(resolve);
-      s.onerror=()=>{ showNotif('Google 로그인 스크립트 로드 실패','error'); resolve(null); };
+      s.onload=()=>doToken(resolve);
+      s.onerror=()=>resolve(null);
       document.head.appendChild(s);
-    } else { doTokenRequest(resolve); }
+    } else doToken(resolve);
   });
 }
-
-function doTokenRequest(resolve){
+function doToken(resolve){
   try{
-    const client = google.accounts.oauth2.initTokenClient({
-      client_id: '1009561708424-chamhoerok.apps.googleusercontent.com',
-      scope: 'https://www.googleapis.com/auth/drive.file',
-      callback:(resp)=>{
+    google.accounts.oauth2.initTokenClient({
+      client_id:'1009561708424-chamhoerok.apps.googleusercontent.com',
+      scope:'https://www.googleapis.com/auth/drive.file',
+      callback:resp=>{
         if(resp.access_token){
-          sessionStorage.setItem('g_token', resp.access_token);
-          sessionStorage.setItem('g_token_exp', String(Date.now() + (resp.expires_in||3600)*1000 - 60000));
+          sessionStorage.setItem('g_token',resp.access_token);
+          sessionStorage.setItem('g_token_exp',String(Date.now()+(resp.expires_in||3600)*1000-60000));
           resolve(resp.access_token);
-        } else { resolve(null); }
+        } else resolve(null);
       },
-      error_callback:(e)=>{ 
-        // 팝업 없이 내보내기로 안내
-        showNotif('Google 로그인 필요 — ↓ 내보내기 후 Drive에 직접 업로드하세요','error');
-        resolve(null);
-      }
-    });
-    client.requestAccessToken({prompt:''});
-  }catch(e){
-    // GSI not available — fallback to export
-    showNotif('✦ 기기에 저장됨. Drive엔 ↓ 내보내기로 업로드하세요','saving');
-    resolve(null);
-  }
+      error_callback:()=>resolve(null)
+    }).requestAccessToken({prompt:''});
+  }catch(e){resolve(null);}
 }
 
-// ── SAVE ALL ──
+// ── SAVE ──
 async function saveAll(){
   const d=getAllData();
-  // 1) localStorage
-  try{ localStorage.setItem('chamhoerok_v3',JSON.stringify(d)); }catch(e){}
-  // 2) Drive
+  try{localStorage.setItem('chamhoerok_v3',JSON.stringify(d));}catch(e){}
   showNotif('☁ Drive에 저장 중...','saving');
-  const text=buildText(d);
-  const ok=await saveToDrive(text);
-  if(ok){ showNotif('✓ Google Drive에 저장되었습니다','success'); }
-  else { showNotif('✦ 기기에 저장되었습니다 (Drive: ↓ 내보내기 활용)','saving'); }
+  const ok=await saveToDrive(buildText(d));
+  showNotif(ok?'✓ Google Drive에 저장되었습니다':'✦ 기기에 저장되었습니다', ok?'success':'saving');
 }
 
 // ── LOAD ──
 function loadAll(){
   try{
     const raw=localStorage.getItem('chamhoerok_v3')||localStorage.getItem('chamhoerok_v2');
-    if(!raw) return;
+    if(!raw)return;
     const d=JSON.parse(raw);
-    if(d.confession) document.getElementById('t-confession').value=d.confession;
-    if(d.gratitude) document.getElementById('t-gratitude').value=d.gratitude;
-    if(d.prayer) document.getElementById('t-prayer').value=d.prayer;
-    if(d.wisdom) document.getElementById('t-wisdom').value=d.wisdom;
-    if(d.letters) letters=d.letters;
-    if(d.grandLetters) grandLetters=d.grandLetters;
-    if(d.tlData) Object.assign(tlData,d.tlData);
-    if(d.relations) relations=d.relations;
-    if(d.photos) photos=d.photos;
+    if(d.confession)document.getElementById('t-confession').value=d.confession;
+    if(d.gratitude)document.getElementById('t-gratitude').value=d.gratitude;
+    if(d.prayer)document.getElementById('t-prayer').value=d.prayer;
+    if(d.wisdom)document.getElementById('t-wisdom').value=d.wisdom;
+    if(d.letters)letters=d.letters;
+    if(d.grandLetters)grandLetters=d.grandLetters;
+    if(d.tlData)Object.assign(tlData,d.tlData);
+    if(d.relations)relations=d.relations;
+    if(d.photos)photos=d.photos;
     if(d.faith){['begin','crisis','restore','encounter','now'].forEach(k=>{if(d.faith[k])document.getElementById('f-'+k).value=d.faith[k];});}
     if(d.will){['faith','family','assets','funeral','legacy','wish'].forEach(k=>{if(d.will[k])document.getElementById('w-'+k).value=d.will[k];});}
     if(d.intercession){['family','church','nation','mission','final'].forEach(k=>{if(d.intercession[k])document.getElementById('i-'+k).value=d.intercession[k];});}
-    renderLetterList(letters,'letterList',openLetterByIdx);
-    renderLetterList(grandLetters,'grandList',openGrandByIdx);
-    renderTimeline(); renderRelations(); renderPhotos();
     ['confession','gratitude','prayer','wisdom'].forEach(id=>{
-      const ta=document.getElementById('t-'+id);
-      const wc=document.getElementById('wc-'+id);
-      if(ta&&wc) wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';
+      const ta=document.getElementById('t-'+id),wc=document.getElementById('wc-'+id);
+      if(ta&&wc)wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';
     });
   }catch(e){}
 }
 
 // ── EXPORT ──
 function exportAll(){
-  const text=buildText(getAllData());
-  const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+  const blob=new Blob([buildText(getAllData())],{type:'text/plain;charset=utf-8'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
   a.download='나의참회록_'+new Date().toISOString().slice(0,10)+'.txt';
   a.click();
+}
+
+// ── COPY LINK ──
+function copyLink(){
+  navigator.clipboard.writeText('https://aijiakorea-svg.github.io/chamhoerok/').then(()=>showNotif('링크가 복사되었습니다','success'));
 }
 
 // ── NOTIF ──
@@ -662,21 +647,21 @@ let notifTimer=null;
 function showNotif(msg,type='success'){
   const n=document.getElementById('notif');
   n.textContent=msg; n.className='notif show '+type;
-  if(notifTimer) clearTimeout(notifTimer);
+  if(notifTimer)clearTimeout(notifTimer);
   notifTimer=setTimeout(()=>n.classList.remove('show'),3000);
 }
 
-// ── AUTO-SAVE 2분 ──
-setInterval(()=>{
-  const d=getAllData();
-  try{ localStorage.setItem('chamhoerok_v3',JSON.stringify(d)); }catch(e){}
-}, 120000);
+// ── AUTO SAVE 2분 ──
+setInterval(()=>{const d=getAllData();try{localStorage.setItem('chamhoerok_v3',JSON.stringify(d));}catch(e){}},120000);
 
 // ── INIT ──
+buildSectionTabs();
 renderLetterList(letters,'letterList',openLetterByIdx);
 renderLetterList(grandLetters,'grandList',openGrandByIdx);
 renderTimeline(); renderRelations(); renderPhotos();
 loadAll();
+// 기본 화면은 나의 참회록
+switchScreen('memoir');
 </script>
 </body>
 </html>
