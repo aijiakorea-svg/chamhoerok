@@ -3,94 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>참회록 — 나의 고백</title>
+<title>참회록</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#faf6ee;
-  --parchment:#f5efe0;--parchment-dark:#e8dcc8;
+  --bg:#faf6ee;--parchment:#f2e8d0;--parchment-dark:#e8dcc8;
   --ink:#1a0f00;--ink-light:#3d2810;--ink-faint:#7a5c3a;
   --gold:#a07020;--gold-light:#c49030;--gold-pale:#f0e0b0;
-  --red:#7a1818;
-  --sidebar-bg:#2a1f10;--sidebar-text:#e8d8b8;
-  --white:#fffdf5;--border:rgba(160,112,32,0.3);
+  --red:#7a1818;--sidebar-bg:#2a1f10;--sidebar-text:#e8d8b8;
+  --white:#fffdf5;--border:rgba(160,112,32,0.28);
   --purple:#4a3a80;--green:#1a5030;--blue:#1a4070;
 }
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
-
-/* TOP BAR */
 .topbar{background:var(--sidebar-bg);border-bottom:2px solid rgba(160,112,32,0.4);padding:0 1rem;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:200}
 .topbar-title{font-family:'IM Fell English',serif;color:#e8c060;font-size:18px;letter-spacing:.04em}
 .topbar-title small{font-family:'Noto Serif KR',serif;font-size:12px;color:#c8b080;margin-left:8px;vertical-align:middle}
 .topbar-right{display:flex;gap:5px}
-.t-btn{background:rgba(160,112,32,0.2);border:1px solid rgba(160,112,32,0.45);color:#e8d8b8;padding:6px 11px;border-radius:5px;font-size:11.5px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;white-space:nowrap}
-.t-btn:active{background:rgba(160,112,32,0.35)}
-.t-btn.gold{background:rgba(160,112,32,0.3);border-color:var(--gold-light);color:#f0d070;font-weight:500}
-
-/* DRIVE BAR */
+.t-btn{background:rgba(160,112,32,0.18);border:1px solid rgba(160,112,32,0.4);color:#e8d8b8;padding:6px 11px;border-radius:5px;font-size:11.5px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;white-space:nowrap}
+.t-btn.gold{background:rgba(160,112,32,0.28);border-color:#c49030;color:#f0d070;font-weight:500}
 .drive-bar{background:#1e3020;border-bottom:1px solid rgba(60,140,80,0.25);padding:6px 14px;font-size:11px;color:#70c880;display:flex;align-items:center;gap:7px}
 .drive-dot{width:6px;height:6px;border-radius:50%;background:#50b860;flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--sidebar-bg);border-top:2px solid rgba(160,112,32,0.3);display:flex;z-index:200;height:58px}
 .bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:#c8b080;opacity:.55;transition:all .18s;font-size:10px;font-family:'Noto Sans KR',sans-serif;border:none;background:none;padding:0}
 .bnav-item .bic{font-size:20px;line-height:1}
 .bnav-item.active{color:#e8c060;opacity:1}
-
-/* MAIN */
 .main{flex:1;overflow-y:auto;padding-bottom:72px}
 .screen{display:none}.screen.on{display:block}
 
-/* ── 어거스틴 화면 ── */
+/* 어거스틴 */
 .aug-screen{background:var(--parchment)}
 .aug-book-nav{display:flex;gap:5px;flex-wrap:wrap;padding:14px 16px 0;background:var(--parchment)}
-.bnav-btn{padding:5px 12px;background:rgba(255,255,255,0.6);border:1px solid var(--border);border-radius:4px;font-size:12px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif}
+.bnav-btn{padding:5px 11px;background:rgba(255,255,255,0.55);border:1px solid var(--border);border-radius:4px;font-size:12px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif}
 .bnav-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
-
-.book-content{display:none;padding:18px 16px 24px}.book-content.active{display:block}
+.book-content{display:none;padding:18px 16px 30px}.book-content.active{display:block}
 .b-heading{font-family:'IM Fell English',serif;font-size:20px;color:var(--red);text-align:center;margin-bottom:4px}
 .b-sub{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--ink-faint);text-align:center;margin-bottom:20px;font-style:italic}
 .aug-text{font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:2.1;color:var(--ink)}
 .aug-text p{margin-bottom:16px;text-indent:1.5em}
-.aug-text .ch{font-size:11.5px;font-weight:700;color:var(--red);text-indent:0;margin:22px 0 8px;letter-spacing:.06em;text-transform:uppercase}
-.aug-text .drop::first-letter{font-family:'IM Fell English',serif;font-size:54px;line-height:.8;float:left;margin-right:6px;margin-top:6px;color:var(--red)}
-.hq{border-left:4px solid var(--gold);padding:12px 16px;margin:18px 0;background:rgba(160,112,32,0.08);font-style:italic;color:var(--ink-light);font-size:15px;text-indent:0;border-radius:0 6px 6px 0;font-family:'Noto Serif KR',serif;line-height:1.9}
-.aug-note{font-size:12px;color:var(--ink-faint);text-align:center;padding:12px 16px;font-style:italic;border-top:1px solid var(--border);margin-top:8px}
+.aug-text .ch{font-size:11.5px;font-weight:700;color:var(--red);text-indent:0;margin:22px 0 8px;letter-spacing:.05em}
+.aug-text .drop::first-letter{font-family:'IM Fell English',serif;font-size:52px;line-height:.8;float:left;margin-right:6px;margin-top:6px;color:var(--red)}
+.hq{border-left:4px solid var(--gold);padding:12px 16px;margin:18px 0;background:rgba(160,112,32,0.09);font-style:italic;color:var(--ink-light);font-size:15px;text-indent:0;border-radius:0 6px 6px 0;font-family:'Noto Serif KR',serif;line-height:1.9}
+.aug-note{font-size:12px;color:var(--ink-faint);text-align:center;padding:14px 16px;font-style:italic;border-top:1px solid var(--border);margin-top:10px}
 
-/* ── 나의 참회록 화면 ── */
+/* 나의 참회록 */
 .memoir-screen{background:var(--white)}
 .section-tabs{display:flex;overflow-x:auto;border-bottom:2px solid var(--border);background:var(--white);position:sticky;top:52px;z-index:100;-webkit-overflow-scrolling:touch}
 .section-tabs::-webkit-scrollbar{display:none}
-.stab{flex-shrink:0;padding:11px 14px;border:none;background:transparent;font-size:12px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.stab{flex-shrink:0;padding:11px 13px;border:none;background:transparent;font-size:12px;color:var(--ink-faint);cursor:pointer;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
 .stab.active{color:var(--ink);border-bottom-color:var(--gold);font-weight:500}
-
 .sec{display:none;padding:18px 16px}.sec.on{display:block}
 .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .sec-ic{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .sec-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:var(--ink)}
 .sec-desc{font-size:12px;color:var(--ink-faint);margin-top:3px}
-
 .jta{width:100%;border:none;outline:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:2.0;color:var(--ink);resize:none;caret-color:var(--gold);min-height:300px}
 .jta::placeholder{color:rgba(100,70,30,.35);font-style:italic;font-size:14px}
-.wc{font-size:11px;color:var(--ink-faint);text-align:right;margin-top:8px;opacity:.6}
-
+.wc{font-size:11px;color:var(--ink-faint);text-align:right;margin-top:8px}
 .lcard{border:1px solid var(--border);border-radius:10px;padding:13px 15px;background:var(--parchment);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .lname{font-size:14.5px;font-weight:600;color:var(--ink);font-family:'Noto Serif KR',serif}
 .lprev{font-size:12px;color:var(--ink-faint);margin-top:3px}
-.add-btn{width:100%;padding:13px;background:transparent;border:1px dashed rgba(160,112,32,.4);color:var(--gold);border-radius:10px;font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px;color:var(--gold-light)}
+.add-btn{width:100%;padding:13px;background:transparent;border:1px dashed rgba(160,112,32,.4);color:var(--gold-light);border-radius:10px;font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:4px}
 .letter-editor{display:none;margin-top:16px}.letter-editor.on{display:block}
 .l-to{width:100%;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink);padding:7px 0;outline:none;font-style:italic;margin-bottom:14px}
 .l-to::placeholder{color:rgba(100,70,30,.35)}
 .btn-row{display:flex;gap:8px;margin-top:12px}
 .btn-row .t-btn{flex:1;padding:11px;font-size:13px;text-align:center}
-
 .wb{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px}
 .wb-h{padding:11px 15px;background:var(--parchment);font-size:13.5px;font-weight:600;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
-.wb textarea{width:100%;border:none;outline:none;background:var(--white);padding:13px 15px;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.95;color:var(--ink);resize:vertical;min-height:85px}
+.wb textarea{width:100%;border:none;outline:none;background:var(--white);padding:13px 15px;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.95;color:var(--ink);resize:vertical;min-height:80px}
 .wb textarea::placeholder{color:rgba(100,70,30,.33);font-style:italic}
-
 .tl-item{display:flex;gap:12px;margin-bottom:16px}
 .tl-left{display:flex;flex-direction:column;align-items:center;width:58px;flex-shrink:0}
 .tl-label{font-size:12px;font-weight:700;color:var(--gold);font-family:'Noto Serif KR',serif;text-align:center}
@@ -99,40 +82,32 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink)
 .tl-ta{flex:1;border:none;border-bottom:1px solid var(--border);background:transparent;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.9;color:var(--ink);resize:none;outline:none;padding:4px 0 10px;min-height:65px}
 .tl-ta::placeholder{color:rgba(100,70,30,.33);font-style:italic;font-size:13px}
 .add-decade-btn{width:100%;padding:11px;background:transparent;border:1px dashed rgba(160,112,32,.35);color:var(--gold-light);border-radius:10px;font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-top:6px}
-
 .rel-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px}
 .rel-head{display:flex;gap:8px;align-items:center;padding:11px 15px;background:var(--parchment);border-bottom:1px solid var(--border)}
 .rel-tag{font-size:11px;padding:3px 10px;border-radius:4px;font-weight:600;flex-shrink:0}
 .rel-name-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink);outline:none;flex:1}
 .rel-ta{width:100%;border:none;outline:none;background:var(--white);padding:13px 15px;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.9;color:var(--ink);resize:vertical;min-height:75px}
 .rel-ta::placeholder{color:rgba(100,70,30,.33);font-style:italic}
-
 .photo-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px}
 .photo-head{display:flex;gap:8px;align-items:center;padding:11px 15px;background:var(--parchment);border-bottom:1px solid var(--border)}
 .photo-date-in{border:none;background:transparent;font-size:12px;color:var(--ink-faint);outline:none;font-family:'Noto Sans KR',sans-serif;width:100px}
 .photo-title-in{border:none;background:transparent;font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink);outline:none;flex:1;font-weight:500}
 .photo-ta{width:100%;border:none;outline:none;background:var(--white);padding:13px 15px;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.9;color:var(--ink);resize:vertical;min-height:75px}
 .photo-ta::placeholder{color:rgba(100,70,30,.33);font-style:italic}
-
 .int-block{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px}
 .int-h{padding:11px 15px;background:var(--parchment);font-size:13.5px;font-weight:600;color:var(--ink-light);border-bottom:1px solid var(--border);font-family:'Noto Serif KR',serif}
 .int-ta{width:100%;border:none;outline:none;background:var(--white);padding:13px 15px;font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.95;color:var(--ink);resize:vertical;min-height:85px}
 .int-ta::placeholder{color:rgba(100,70,30,.33);font-style:italic}
-
-/* 설정 화면 */
 .setting-screen{background:var(--bg);padding:20px 16px}
 .setting-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
 .setting-card-title{font-size:13.5px;font-weight:600;color:var(--ink-light);margin-bottom:10px;font-family:'Noto Serif KR',serif}
-.setting-card p{font-size:13px;color:var(--ink-light);line-height:1.8}
-.setting-card .link{font-size:12px;color:var(--gold);word-break:break-all;margin:8px 0;display:block;line-height:1.6}
-
-/* NOTIF */
+.setting-card p{font-size:13px;color:var(--ink-light);line-height:1.9}
+.slink{font-size:12px;color:var(--gold);word-break:break-all;margin:8px 0;display:block}
 .notif{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);padding:10px 22px;border-radius:22px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap;font-family:'Noto Sans KR',sans-serif}
 .notif.show{opacity:1}
 .notif.success{background:rgba(20,40,20,.95);color:#70d880;border:1px solid rgba(60,140,70,.4)}
 .notif.saving{background:rgba(30,20,5,.95);color:#e8c060;border:1px solid rgba(160,112,32,.4)}
 .notif.error{background:rgba(40,10,10,.95);color:#e08070;border:1px solid rgba(180,60,50,.4)}
-
 .ic-conf{background:rgba(122,24,24,.1);color:var(--red)}
 .ic-grat{background:rgba(160,112,32,.12);color:var(--gold)}
 .ic-pray{background:rgba(74,58,128,.1);color:var(--purple)}
@@ -143,12 +118,10 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink)
 .ic-rel{background:rgba(122,24,24,.08);color:var(--red)}
 .ic-ph{background:rgba(26,80,48,.08);color:var(--green)}
 .ic-int{background:rgba(74,58,128,.08);color:var(--purple)}
-
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(160,112,32,.2);border-radius:2px}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <div class="topbar-title">Confessiones <small>참회록</small></div>
   <div class="topbar-right">
@@ -160,418 +133,254 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink)
   <div class="drive-dot"></div>
   <span>Drive 연동 — aijiakorea@gmail.com · 참회록 (Chamhoerok)</span>
 </div>
-
 <div class="main">
 
-<!-- ══════════════════════════════════════
-     어거스틴 화면 — 13권 전체 주요 내용
-     ══════════════════════════════════════ -->
+<!-- 어거스틴 화면 -->
 <div class="screen aug-screen" id="screen-aug">
-  <div class="aug-book-nav" id="bookNav"></div>
+<div class="aug-book-nav" id="bookNav"></div>
+<div class="book-content active" id="book-1">
+<div class="b-heading">Liber I · 제1권</div><div class="b-sub">찬미와 부르짖음 — 유년 시절 (354~365년)</div>
+<div class="aug-text">
+<p class="ch">1장 — 위대하신 하나님께 드리는 찬미</p>
+<p class="drop">"주님은 위대하시고 크게 찬양 받으실 분이십니다. 주님의 권능은 크시며 주님의 지혜는 헤아릴 수 없습니다. 주님께 찬양을 드리기를 원하는 것은 주님이 지으신 인간이옵니다."</p>
+<div class="hq">"우리의 마음이 주 안에서 안식을 얻기까지 우리 마음은 쉬지 못합니다." — I.1.1</div>
+<p class="ch">2장 — 하나님이 내 안에 계심</p>
+<p>주님은 어떻게 나를 부르십니까? 하늘과 땅을 충만하게 하시는 주님께서 나의 안에 계시지 않으면, 나는 어디에 주님을 불러들이도록 하겠습니까? 주님 안에 있지 않으면 어떤 것도 존재하지 않습니다.</p>
+<p class="ch">5장 — 불안한 영혼의 간구</p>
+<p>내 마음이 불안하여 주님의 은총을 구하오니, 주님의 인자하심으로 응답하여 주옵소서. 주님이 부르짖어 내 귀를 여시지 않으면 내가 어떻게 주님을 구하겠습니까?</p>
+<p class="ch">6장 — 유아기에도 죄가 있음</p>
+<p>나는 유아기에도 죄를 지었습니다. 나는 젖을 탐욕스럽게 마셨으며, 함께 젖 먹는 아이를 질투하여 울었습니다. 유아들은 무고하지 않습니다. 그들은 단지 몸이 약할 뿐입니다.</p>
+<p class="ch">11장 — 어린 시절의 기도</p>
+<p>나는 어린아이일 때부터 영원한 생명과 주님 예수 그리스도를 들었습니다. 병이 들었을 때 세례를 원했으나, 나아지자 미루어졌습니다. 죄를 지을수록 씻음이 더 필요할 것이라는 생각에서였습니다.</p>
+</div></div>
 
-  <!-- 제1권 -->
-  <div class="book-content active" id="book-1">
-    <div class="b-heading">Liber I · 제1권</div>
-    <div class="b-sub">찬미와 부르짖음 — 유년 시절의 회상 (354~365년경)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 위대하신 하나님께 드리는 찬미</p>
-      <p class="drop">"주님은 위대하시고 크게 찬양 받으실 분이십니다. 주님의 권능은 크시며 주님의 지혜는 헤아릴 수 없습니다. 주님께 찬양을 드리기를 원하는 것은 주님이 지으신 인간이옵니다. 이 인간은 자기의 죽음을 가지고 다니며, 자기의 죄의 증거를 가지고 다닙니다."</p>
-      <div class="hq">"우리의 마음이 주 안에서 안식을 얻기까지 우리 마음은 쉬지 못합니다." — I.1.1</div>
-      <p class="ch">2장 — 하나님이 내 안에 계심</p>
-      <p>주님은 어떻게 나를 부르십니까? 하늘과 땅을 충만하게 하시는 주님께서 나의 안에 계시지 않으면, 나는 어디에 주님을 불러들이도록 하겠습니까? 주님 안에 있지 않으면 어떤 것도 존재하지 않습니다. 그러므로 이미 존재하는 것은 모두 주님을 담고 있습니다.</p>
-      <p class="ch">5장 — 불안한 영혼의 간구</p>
-      <p>내 마음이 불안하여 주님의 은총을 구하오니, 주님의 인자하심으로 응답하여 주옵소서. 주님이 부르짖어 내 귀를 여시지 않으면 내가 어떻게 주님을 구하겠습니까? 주님이 빛을 비추지 않으시면 내가 어떻게 볼 수 있겠습니까?</p>
-      <p class="ch">6장 — 유아기의 죄</p>
-      <p>나는 유아기에도 죄를 지었습니다. 나는 젖을 탐욕스럽게 마셨으며, 나와 함께 젖을 먹는 아이를 질투하여 울었습니다. 유아들은 무고하지 않습니다. 그들은 단지 몸이 약할 뿐입니다.</p>
-      <p class="ch">9장 — 학교에서의 고통</p>
-      <p>나는 학교 다니는 것을 싫어했습니다. 공부하도록 강요하는 어른들을 미워했습니다. 그러나 주님, 당신은 내가 공부하도록 허락하셨습니다. 나는 나중에야 그 고통이 유익했음을 알았습니다.</p>
-      <p class="ch">11장 — 어린 시절의 기도</p>
-      <p>나는 어린아이일 때부터 들었습니다. 영원한 생명과 주님 예수 그리스도를. 그리고 나는 어머니의 신앙으로부터 세례를 받으려 했습니다. 그러나 병이 나아지자 세례는 미루어졌습니다. 죄를 지을수록 죄 씻음이 더 필요할 것이라는 생각에서였습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-2">
+<div class="b-heading">Liber II · 제2권</div><div class="b-sub">청년의 죄악 — 방황과 욕망 (16세, 370년)</div>
+<div class="aug-text">
+<p class="ch">1장 — 죄악의 회상</p>
+<p class="drop">나는 내 청년 시절의 더럽혀짐을 회상하고자 합니다. 그것은 내 영혼이 죄 안에서 썩어가고 있었기 때문입니다. 주님의 아름다움을 사랑하는 것이 아니라, 나는 주님을 떠나 내 자신의 길로 갔습니다.</p>
+<div class="hq">"나는 사랑하기를 사랑했고, 사랑받기를 갈구했습니다." — II.2.2</div>
+<p class="ch">3장 — 아버지의 야망과 어머니의 경고</p>
+<p>나의 아버지는 내가 좋은 교육을 받기를 원했습니다. 어머니 모니카만이 내 순결을 위해 간절히 경고하셨습니다. 그러나 나는 그 경고를 여성의 잔소리로 여겨 부끄러워했습니다.</p>
+<p class="ch">4장 — 배 도둑질</p>
+<p>우리 동네에 배나무가 있었습니다. 우리 무리들은 밤늦게 거기에 가서 엄청난 양의 배를 흔들어 따서는 돼지에게 던져 주었습니다. 악행 자체를 즐기기 위해서였습니다.</p>
+<div class="hq">"내가 사랑한 것은 배가 아니었습니다. 그것은 죄 그 자체, 악인들과 함께 악을 행하는 스릴이었습니다." — II.4.9</div>
+</div></div>
 
-  <!-- 제2권 -->
-  <div class="book-content" id="book-2">
-    <div class="b-heading">Liber II · 제2권</div>
-    <div class="b-sub">청년의 죄악 — 방황과 욕망 (16세, 370년경)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 죄악의 회상</p>
-      <p class="drop">나는 내 청년 시절의 더럽혀짐을 회상하고자 합니다. 그것은 내 영혼이 죄 안에서 썩어가고 있었기 때문입니다. 주님의 아름다움을 사랑하는 것이 아니라, 나는 주님을 떠나 내 자신의 길로 갔습니다.</p>
-      <div class="hq">"나는 사랑하기를 사랑했고, 사랑받기를 갈구했습니다. 사랑하는 자를 사랑하는 것으로는 만족하지 못했습니다." — II.2.2</div>
-      <p class="ch">2장 — 정욕의 안개</p>
-      <p>나는 열여섯 살이었습니다. 정욕의 안개가 내 마음의 밝음을 가렸습니다. 나는 당신의 계명의 빛을 구름 속에서 볼 수 없었습니다. 사랑과 욕정이 서로 뒤엉켜 나는 그 둘을 구분할 수 없었습니다.</p>
-      <p class="ch">3장 — 아버지의 야망과 어머니의 경고</p>
-      <p>나의 아버지는 내가 좋은 교육을 받기를 원했습니다. 그러나 아버지는 내가 주님 안에서 자라기를 원하지 않았습니다. 어머니 모니카만이 내 순결을 위해 간절히 경고하셨습니다. 그러나 나는 그 경고를 여성의 잔소리로 여겨 부끄러워했습니다.</p>
-      <p class="ch">4장 — 배 도둑질</p>
-      <p>우리 동네에 배나무가 있었는데, 과일이 별로 탐스럽지도 않았습니다. 우리 무리들은 밤늦게 거기에 가서 엄청난 양의 배를 흔들어 따서는 돼지에게 던져 주었습니다. 악행 자체를 즐기기 위해서였습니다.</p>
-      <div class="hq">"내가 사랑한 것은 배가 아니었습니다. 그것은 죄 그 자체였습니다. 악인들과 함께 악을 행하는 스릴이었습니다." — II.4.9</div>
-      <p class="ch">6장 — 악의 수수께끼</p>
-      <p>주님, 당신 안에 있는 것보다 더 달콤한 것이 무엇이 있겠습니까? 그런데 나는 그 달콤함을 버리고 부패한 것들을 사랑했습니다. 나는 왜 악을 행했습니까? 그것은 단지 악이기 때문에 행했습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-3">
+<div class="b-heading">Liber III · 제3권</div><div class="b-sub">카르타고에서 — 마니교와의 만남 (17~20세, 371~374년)</div>
+<div class="aug-text">
+<p class="ch">1장 — 카르타고의 유혹</p>
+<p class="drop">나는 카르타고에 왔습니다. 나의 주위에서는 정욕의 불길이 타오르고 있었습니다. 나는 아직 사랑하고 있지 않았지만 사랑하기를 원했고, 사랑하는 자를 찾고 있었습니다.</p>
+<p class="ch">4장 — 키케로와의 만남</p>
+<p>나는 키케로의 글 호르텐시우스를 접하게 되었습니다. 그 글은 나의 감정을 바꾸어 놓았고, 나의 기도를 주님께로 향하게 하였습니다.</p>
+<div class="hq">"갑자기 모든 빈 기대가 비천하게 여겨졌고, 나는 불멸의 지혜를 향한 열정으로 불타올랐습니다." — III.4.7</div>
+<p class="ch">6장 — 마니교에 빠짐</p>
+<p>나는 마니교 사람들의 헛된 수다에 넘어갔습니다. 어머니는 내가 마니교에 빠진 것을 알고 통곡하며 기도하셨습니다. 어느 주교가 말했습니다: "그렇게 많은 눈물의 아들은 결코 멸망하지 않을 것입니다."</p>
+<p class="ch">11장 — 어머니의 꿈</p>
+<p>어머니는 꿈을 꾸었습니다. 빛나는 청년이 다가와 말했습니다: "네 아들이 네 곁에 있는 것이 보이지 않느냐?" 어머니가 보니 나는 그녀 곁에 서 있었습니다.</p>
+</div></div>
 
-  <!-- 제3권 -->
-  <div class="book-content" id="book-3">
-    <div class="b-heading">Liber III · 제3권</div>
-    <div class="b-sub">카르타고에서 — 마니교와의 만남 (17~20세, 371~374년)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 카르타고의 유혹</p>
-      <p class="drop">나는 카르타고에 왔습니다. 나의 주위에서는 정욕의 불길이 타오르고 있었습니다. 나는 아직 사랑하고 있지 않았지만 사랑하기를 원했고, 나는 사랑하는 자를 찾고 있었습니다.</p>
-      <p class="ch">2장 — 극장의 슬픔</p>
-      <p>나는 극장에서 비참한 사람들의 운명에 빠져들기를 좋아했습니다. 그런데 이상한 것은, 내 자신의 고통은 느끼지 않으면서 무대 위의 고통을 보고 기꺼이 눈물을 흘렸다는 것입니다.</p>
-      <p class="ch">4장 — 키케로와의 만남</p>
-      <p>당시 내 학습 중에 나는 키케로의 글, 즉 호르텐시우스라 불리는 권면의 글을 접하게 되었습니다. 그 글은 나의 감정을 바꾸어 놓았고, 나의 기도를 주님께로 향하게 하였으며, 나의 소원과 욕구를 완전히 바꾸어 놓았습니다.</p>
-      <div class="hq">"갑자기 모든 빈 기대가 비천하게 여겨졌고, 나는 불멸의 지혜를 향한 믿을 수 없는 열정으로 불타올랐습니다." — III.4.7</div>
-      <p class="ch">5장 — 성경의 실망</p>
-      <p>그래서 나는 성경을 살펴보기로 했습니다. 그런데 성경은 키케로의 문체에 비해 너무 초라하게 보였습니다. 내 교만함이 성경의 단순함을 감당할 수 없었습니다. 나는 성경의 깊이를 볼 수 없는 작은 아이였습니다.</p>
-      <p class="ch">6장 — 마니교에 빠짐</p>
-      <p>나는 마니교 사람들의 헛된 수다에 넘어갔습니다. 그들은 하나님과 악의 이원론을 가르쳤습니다. 어머니는 내가 마니교에 빠진 것을 알고 통곡하며 기도하셨습니다. 어느 주교가 그녀에게 말했습니다: "그렇게 많은 눈물의 아들은 결코 멸망하지 않을 것입니다."</p>
-      <p class="ch">11장 — 어머니의 꿈</p>
-      <p>어머니는 꿈을 꾸었습니다. 그녀는 나무판자 위에 서 있었고, 빛나는 청년이 다가와 미소 지으며 물었습니다. 어머니가 슬픔의 이유를 말하자 그는 말했습니다: "네 아들이 네 곁에 있는 것이 보이지 않느냐?" 어머니가 보니 나는 그녀 곁에 서 있었습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-4">
+<div class="b-heading">Liber IV · 제4권</div><div class="b-sub">친구의 죽음과 슬픔 (20~28세, 374~382년)</div>
+<div class="aug-text">
+<p class="ch">4장 — 친구의 죽음</p>
+<p class="drop">나의 친한 친구가 죽었습니다. 우리는 어릴 때부터 함께 자랐습니다. 그가 병들어 죽음 앞에 섰을 때 세례를 받았습니다. 회복되자 나는 장난삼아 그가 받은 세례를 비웃었습니다. 그러나 그는 충격을 받아 나를 나무랐습니다. 며칠 후 그는 다시 열이 나서 죽었습니다.</p>
+<div class="hq">"나의 마음은 어두워졌습니다. 내가 보는 것은 오직 죽음뿐이었습니다." — IV.4.9</div>
+<p class="ch">6장 — 슬픔의 본질</p>
+<p>나는 왜 이렇게 슬픔에 빠졌습니까? 나는 가멸할 것들을 사랑했고, 그것들이 사라졌을 때 나는 무너졌습니다. 주님, 우리가 우리 영혼을 당신 안에 쉬게 할 때에야 비로소 안식을 얻습니다.</p>
+<p class="ch">10장 — 하나님만이 영원하심</p>
+<p>사랑하는 것들을 잃지 않으려면 주님 안에 있는 것들을 사랑하십시오. 그것들은 영원히 지속됩니다. 모든 것은 흘러가고 지나갑니다.</p>
+</div></div>
 
-  <!-- 제4권 -->
-  <div class="book-content" id="book-4">
-    <div class="b-heading">Liber IV · 제4권</div>
-    <div class="b-sub">친구의 죽음과 슬픔 (20~28세, 374~382년)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 마니교 신자로서의 9년</p>
-      <p class="drop">이 기간 동안 나는 마니교 신자로서 다른 사람들을 가르치고 자신도 배웠습니다. 또한 나는 살았습니다 — 여자와 함께, 하나님의 율법이 아닌 방황하는 정욕으로. 그러나 그 여자는 내게 오직 한 명이었고 나는 그녀에게 신실했습니다.</p>
-      <p class="ch">4장 — 친구의 죽음</p>
-      <p>나의 친한 친구가 죽었습니다. 우리는 어릴 때부터 함께 자랐습니다. 그는 병들어 죽음 앞에 섰을 때 세례를 받았습니다. 그가 회복되자 나는 장난삼아 그가 받은 세례를 비웃었습니다. 그러나 그는 충격을 받아 나를 나무랐습니다. 며칠 후 그는 다시 열이 나서 죽었습니다.</p>
-      <div class="hq">"나의 마음은 어두워졌습니다. 내가 보는 것은 오직 죽음뿐이었습니다. 나의 고향은 나에게 고통이었고, 아버지 집은 이상한 불행이었습니다." — IV.4.9</div>
-      <p class="ch">6장 — 슬픔의 본질</p>
-      <p>나는 왜 이렇게 슬픔에 빠졌습니까? 나는 가멸(可滅)할 것들을 사랑했고, 그것들이 사라졌을 때 나는 무너졌습니다. 주님, 우리가 우리 영혼을 당신 안에 쉬게 할 때에야 비로소 우리의 영혼은 안식을 얻습니다. 당신 밖의 것들은 고통입니다.</p>
-      <p class="ch">10장 — 하나님만이 영원하심</p>
-      <p>사랑하는 것들을 잃지 않으려면 주님 안에 있는 것들을 사랑하십시오. 그것들은 영원히 지속됩니다. 모든 것은 흘러가고 지나갑니다. 그것들과 함께 당신의 마음을 흘러가게 하지 마십시오.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-5">
+<div class="b-heading">Liber V · 제5권</div><div class="b-sub">파우스투스와의 만남, 로마와 밀라노로 (28~29세)</div>
+<div class="aug-text">
+<p class="ch">3장 — 마니교 지도자 파우스투스</p>
+<p class="drop">마니교 신자들은 파우스투스라는 주교를 나의 의혹을 해결해 줄 사람으로 칭송했습니다. 마침내 그가 왔습니다. 그는 매력적인 사람이었습니다. 그러나 그는 내가 원하는 답을 줄 수 없었습니다.</p>
+<div class="hq">"파우스투스는 나의 지적 갈망을 충족시키지 못했습니다. 마니교에 대한 나의 열성이 식기 시작했습니다." — V.7.13</div>
+<p class="ch">8장 — 어머니를 두고 몰래 탈출</p>
+<p>어머니가 알면 떠나지 못하게 할 것이 두려워, 나는 몰래 배를 탔습니다. 어머니는 울며 부두에 서 계셨습니다. 나는 그녀에게 거짓말을 했습니다. 주님은 내 어머니의 기도를 들으셨고, 나의 도망을 선한 목적을 위해 사용하셨습니다.</p>
+<p class="ch">13장 — 밀라노에서 암브로시우스를 만남</p>
+<p>나는 밀라노에서 수사학 교사 자리를 얻었습니다. 그리고 암브로시우스 주교를 만났습니다. 나는 처음에 수사학적 기교를 배우러 그의 설교를 들으러 갔습니다.</p>
+</div></div>
 
-  <!-- 제5권 -->
-  <div class="book-content" id="book-5">
-    <div class="b-heading">Liber V · 제5권</div>
-    <div class="b-sub">파우스투스와의 만남, 로마와 밀라노로 (28~29세, 383~384년)</div>
-    <div class="aug-text">
-      <p class="ch">3장 — 마니교 지도자 파우스투스</p>
-      <p class="drop">마니교 신자들은 파우스투스라는 주교를 나의 의혹을 해결해 줄 사람으로 오랫동안 칭송했습니다. 마침내 그가 왔습니다. 나는 그를 만났습니다. 그는 매력적인 사람이었습니다. 그러나 그는 내가 원하는 답을 줄 수 없었습니다. 그는 자신이 알지 못하는 것을 솔직히 인정했습니다.</p>
-      <div class="hq">"파우스투스는 나의 지적 갈망을 충족시키지 못했습니다. 마니교에 대한 나의 열성이 식기 시작했습니다." — V.7.13</div>
-      <p class="ch">8장 — 로마로의 탈출</p>
-      <p>어머니가 알면 떠나지 못하게 할 것이 두려워, 나는 몰래 배를 탔습니다. 어머니는 울며 부두에 서 계셨습니다. 나는 그녀에게 거짓말을 했습니다. 주님은 내 어머니의 기도를 들으셨고, 나의 도망을 선한 목적을 위해 사용하셨습니다.</p>
-      <p class="ch">13장 — 밀라노로, 암브로시우스를 만남</p>
-      <p>나는 밀라노에서 수사학 교사 자리를 얻었습니다. 그리고 나는 암브로시우스 주교를 만났습니다. 그는 당시 가장 훌륭한 설교자로 세상에 알려진 사람이었습니다. 나는 그의 설교를 들으러 갔습니다 — 처음에는 수사학적 기교를 배우러.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-6">
+<div class="b-heading">Liber VI · 제6권</div><div class="b-sub">어머니 모니카와 암브로시우스 (29~30세)</div>
+<div class="aug-text">
+<p class="ch">1장 — 어머니의 도착</p>
+<p class="drop">나의 어머니 모니카가 밀라노에 도착했습니다. 그녀는 나를 찾아 바다와 육지를 건너왔습니다. 믿음이 그녀에게 안전을 주었습니다. 그녀는 폭풍 속에서도 선원들을 위로했습니다.</p>
+<div class="hq">"눈물의 아들은 결코 멸망하지 않습니다." — 한 주교가 모니카에게 한 말 (VI.1.1)</div>
+<p class="ch">3장 — 암브로시우스의 묵독</p>
+<p>암브로시우스가 책을 읽을 때, 그의 눈은 페이지를 훑었고 마음은 의미를 추구했지만, 목소리와 혀는 쉬었습니다. 그는 소리 없이 읽었습니다. 나는 그와 이야기할 기회를 거의 얻지 못했습니다.</p>
+<p class="ch">6장 — 행복이란 무엇인가</p>
+<p>나는 행복하고 싶었습니다. 어느 날 나는 술에 취해 기뻐하는 거지를 보았습니다. 나는 생각했습니다: 저 거지가 지금 나보다 더 행복하지 않은가? 나는 법률을 공부하고 명예를 쫓았지만 진정한 기쁨을 몰랐습니다.</p>
+</div></div>
 
-  <!-- 제6권 -->
-  <div class="book-content" id="book-6">
-    <div class="b-heading">Liber VI · 제6권</div>
-    <div class="b-sub">어머니 모니카와 암브로시우스 (29~30세, 384~385년)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 어머니의 도착</p>
-      <p class="drop">나의 어머니 모니카가 밀라노에 도착했습니다. 그녀는 나를 찾아 바다와 육지를 건너왔습니다. 그녀는 위험에도 두려워하지 않았습니다. 믿음이 그녀에게 안전을 주었습니다. 그녀는 폭풍 속에서도 선원들을 위로했습니다.</p>
-      <div class="hq">"눈물의 아들은 결코 멸망하지 않습니다." — 한 주교가 모니카에게 한 말 (VI.1.1)</div>
-      <p class="ch">3장 — 암브로시우스</p>
-      <p>암브로시우스는 바쁜 사람이었습니다. 그가 책을 읽을 때, 그의 눈은 페이지를 훑었고 마음은 의미를 추구했지만, 목소리와 혀는 쉬었습니다. 그는 소리 없이 읽었습니다. 나는 그와 이야기할 기회를 거의 얻지 못했습니다.</p>
-      <p class="ch">6장 — 행복이란 무엇인가</p>
-      <p>나는 행복하고 싶었습니다. 그러나 나는 그것이 어디에 있는지 알지 못했습니다. 어느 날 나는 술에 취해 기뻐하는 거지를 보았습니다. 나는 생각했습니다: 저 거지가 지금 나보다 더 행복하지 않은가? 나는 법률을 공부하고 명예를 쫓았지만 진정한 기쁨을 몰랐습니다.</p>
-      <p class="ch">11장 — 알리피우스와 네브리디우스</p>
-      <p>나에게는 두 친구가 있었습니다. 알리피우스는 검투사 경기에 빠져들었다가 내 말 한마디로 그 중독에서 벗어났습니다. 네브리디우스는 진리를 열렬히 추구하는 사람이었습니다. 우리 셋은 함께 진리를 찾았습니다.</p>
-      <p class="ch">15장 — 약혼과 결별</p>
-      <p>내 어머니는 나를 위한 결혼을 추진했습니다. 함께 살던 여인은 나를 떠나야 했습니다. 그녀는 자신의 나라로 돌아가며 나에게 다시는 남자를 알지 않겠다고 맹세했습니다. 그러나 나는 참을 수가 없어 또 다른 여인을 두었습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-7">
+<div class="b-heading">Liber VII · 제7권</div><div class="b-sub">신플라톤주의와 진리 탐구 (30~31세)</div>
+<div class="aug-text">
+<p class="ch">9장 — 플라톤 철학자들의 책</p>
+<p class="drop">누군가가 플라톤주의 철학자들의 책들을 나에게 가져다 주었습니다. 거기서 나는 읽었습니다: 태초에 말씀이 계셨다는 것을. 그러나 나는 거기서 읽지 못했습니다: 말씀이 육신이 되어 우리 가운데 거하셨다는 것을.</p>
+<div class="hq">"나는 높은 데 올라가려 했지만, 낮아지는 법을 아직 배우지 못했습니다." — VII.20.26</div>
+<p class="ch">10장 — 진리의 빛을 봄</p>
+<p>주님의 인도 아래 나는 나 자신의 내면으로 들어갔습니다. 나는 내 영혼의 눈으로 변치 않는 빛을 보았습니다. 그것은 물질적인 빛이 아니었습니다. 그것을 초월한 빛이었습니다.</p>
+<p class="ch">20장 — 그리스도가 길임을 깨달음</p>
+<p>나는 말씀을 찾았습니다. 그러나 나는 겸손을 배우지 못했습니다. 나는 우리 주 예수 그리스도를 완전한 인간으로만 생각했습니다. 그분의 신성을 아직 이해하지 못했습니다.</p>
+</div></div>
 
-  <!-- 제7권 -->
-  <div class="book-content" id="book-7">
-    <div class="b-heading">Liber VII · 제7권</div>
-    <div class="b-sub">신플라톤주의와 진리 탐구 (30~31세, 385~386년)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 하나님의 본질에 대한 오류</p>
-      <p class="drop">나는 아직도 하나님을 물질적 존재로 생각했습니다. 나는 하나님을 온 우주에 스며있는 거대한 질량으로 상상했습니다. 나는 악의 기원을 이해할 수 없었습니다. 이것이 마니교의 이원론에 나를 묶어두었습니다.</p>
-      <p class="ch">9장 — 플라톤 철학자들의 책</p>
-      <p>누군가가 플라톤주의 철학자들의 책들을 나에게 가져다 주었습니다. 라틴어로 번역된 것이었습니다. 거기서 나는 읽었습니다: 태초에 말씀이 계셨다는 것을. 그러나 나는 거기서 읽지 못했습니다: 말씀이 육신이 되어 우리 가운데 거하셨다는 것을.</p>
-      <div class="hq">"나는 높은 데 올라가려 했지만, 돌아와 낮아지는 법을 아직 배우지 못했습니다." — VII.20.26</div>
-      <p class="ch">10장 — 진리의 빛을 봄</p>
-      <p>주님의 인도 아래 나는 나 자신의 내면으로 들어갔습니다. 나는 내 영혼의 눈으로 내 마음의 눈 위에서, 변치 않는 빛을 보았습니다. 그것은 물질적인 빛이 아니었습니다. 그것은 모든 마음이 아는 것과는 다른, 그것을 초월한 빛이었습니다.</p>
-      <p class="ch">20장 — 그리스도가 길임을 깨달음</p>
-      <p>나는 말씀을 찾았습니다. 그러나 나는 겸손을 배우지 못했습니다. 나는 우리 주 예수 그리스도를 어떻게 해석해야 할지 몰랐습니다. 나는 그분을 완전한 인간으로, 지혜에서 탁월한 분으로 생각했습니다. 그러나 그분의 신성을 아직 이해하지 못했습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-8">
+<div class="b-heading">Liber VIII · 제8권</div><div class="b-sub">회심 — 밀라노 정원에서 (31세, 386년)</div>
+<div class="aug-text">
+<p class="ch">5장 — 의지의 갈등</p>
+<p class="drop">나는 오래전부터 내일 해야지, 내일이라고 말해왔습니다. 그러나 내일은 결코 오지 않았습니다. 나는 당신의 길이 선하다는 것을 알았습니다. 그러나 나는 세상의 것을 사랑했고, 그것들이 나를 붙잡았습니다.</p>
+<div class="hq">"주님, 저에게 정결함을 주소서. 그러나 아직은 아닙니다." — 나의 기도 (VIII.7.17)</div>
+<p class="ch">12장 — 정원에서의 회심</p>
+<p>나는 무화과나무 아래 쓰러져 울었습니다. 갑자기 이웃집에서 어린아이의 노랫소리가 들려왔습니다. "집어 들고 읽어라, 집어 들고 읽어라."</p>
+<p>나는 사도 바울의 서신을 집어 들었습니다. "낮에와 같이 단정히 행하고... 오직 주 예수 그리스도로 옷 입고 정욕을 위하여 육신의 일을 도모하지 말라."</p>
+<div class="hq">"더 읽을 필요가 없었습니다. 그 구절이 끝나기 전에 빛이 내 마음에 넘쳐 들어와 의심의 모든 어두움이 사라졌습니다." — VIII.12.29</div>
+</div></div>
 
-  <!-- 제8권 -->
-  <div class="book-content" id="book-8">
-    <div class="b-heading">Liber VIII · 제8권</div>
-    <div class="b-sub">회심 — 밀라노 정원에서 (31세, 386년)</div>
-    <div class="aug-text">
-      <p class="ch">2장 — 심플리키아누스와 빅토리누스</p>
-      <p class="drop">나는 암브로시우스의 영적 아버지 심플리키아누스를 찾아갔습니다. 그는 내게 유명한 수사학자 빅토리누스의 이야기를 해주었습니다. 그는 노년에 그리스도인이 되었습니다. 그 이야기가 나를 불타게 했습니다.</p>
-      <p class="ch">5장 — 의지의 갈등</p>
-      <p>나는 오래전부터 내일 해야지, 내일이라고 말해왔습니다. 그러나 내일은 결코 오지 않았습니다. 나는 당신의 길이 선하다는 것을 알았습니다. 그러나 나는 세상의 것을 사랑했고, 그것들이 나를 붙잡았습니다.</p>
-      <div class="hq">"주님, 저에게 정결함을 주소서. 그러나 아직은 아닙니다." — 나의 기도였습니다. (VIII.7.17)</div>
-      <p class="ch">8장 — 폰티키아누스의 이야기</p>
-      <p>폰티키아누스라는 친구가 우리를 방문했습니다. 그는 이집트의 수도사 안토니우스의 이야기를 해주었습니다. 그의 이야기를 들으며 나는 나 자신의 부끄러움을 보았습니다. 나는 얼마나 오랫동안 미루어 왔습니까!</p>
-      <p class="ch">12장 — 정원에서의 회심</p>
-      <p>나는 정원으로 나갔습니다. 알리피우스는 나를 따라왔습니다. 나는 무화과나무 아래 쓰러져 울었습니다. 그때 갑자기 이웃집에서 어린아이의 노랫소리가 들려왔습니다. "집어 들고 읽어라, 집어 들고 읽어라."</p>
-      <p>나는 사도 바울의 서신을 집어 들었습니다. 처음 눈에 띄는 구절을 읽었습니다. "낮에와 같이 단정히 행하고 방탕하거나 술 취하지 말며 음란하거나 호색하지 말며 다투거나 시기하지 말고 오직 주 예수 그리스도로 옷 입고 정욕을 위하여 육신의 일을 도모하지 말라."</p>
-      <div class="hq">"더 읽을 필요가 없었습니다. 그 구절이 끝나기 전에 빛이 내 마음에 넘쳐 들어와 의심의 모든 어두움이 사라졌습니다." — VIII.12.29</div>
-    </div>
-  </div>
+<div class="book-content" id="book-9">
+<div class="b-heading">Liber IX · 제9권</div><div class="b-sub">세례와 어머니의 죽음 (31~33세, 386~388년)</div>
+<div class="aug-text">
+<p class="ch">6장 — 세례를 받음</p>
+<p class="drop">386년 봄, 나는 암브로시우스로부터 세례를 받았습니다. 알리피우스도, 나의 아들 아데오다투스도 함께였습니다. 나는 울었습니다. 당신의 찬미를 들으며 흘린 눈물이 나의 얼굴을 적셨습니다.</p>
+<p class="ch">10장 — 오스티아에서의 환상</p>
+<p>어머니와 나는 오스티아의 창가에 서서 영원한 삶에 대해 이야기했습니다. 우리는 잠시 그 영원한 지혜에 닿았습니다.</p>
+<div class="hq">"만약 육체의 소란이 침묵하고... 그 침묵 속에서 하나님의 말씀이 들린다면 — 그것이 영원한 생명이 아니겠습니까?" — IX.10.25</div>
+<p class="ch">11장 — 어머니의 마지막 말</p>
+<p>"아들아, 이 세상에서 내가 기뻐할 것은 하나도 없다. 한 가지를 원했는데, 바로 죽기 전에 네가 그리스도인이 되는 것을 보는 것이었다. 하나님이 이보다 더 풍성하게 주셨구나."</p>
+</div></div>
 
-  <!-- 제9권 -->
-  <div class="book-content" id="book-9">
-    <div class="b-heading">Liber IX · 제9권</div>
-    <div class="b-sub">세례와 어머니의 죽음 (31~33세, 386~388년)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 새로운 삶의 시작</p>
-      <p class="drop">주님, 나는 당신의 종입니다. 나는 당신의 종이며, 당신의 여종의 아들입니다. 당신은 나의 사슬을 끊으셨습니다. 나는 당신께 감사의 제사를 드릴 것입니다.</p>
-      <p class="ch">6장 — 세례를 받음</p>
-      <p>386년 봄, 나는 암브로시우스로부터 세례를 받았습니다. 알리피우스도, 나의 아들 아데오다투스도 함께였습니다. 나는 울었습니다. 당신의 찬미를 들으며 흘린 눈물이 나의 얼굴을 적셨습니다.</p>
-      <p class="ch">10장 — 오스티아에서의 환상</p>
-      <p>어머니와 나는 오스티아의 창가에 서서 이야기를 나누었습니다. 우리는 함께 영원한 삶에 대해 이야기했고, 감각적 쾌락을 넘어서 내면의 빛을 향해 나아가고 있었습니다. 우리는 잠시 그 영원한 지혜에 닿았습니다.</p>
-      <div class="hq">"만약 육체의 소란이 침묵하고... 하늘과 땅과 바다가 침묵하고... 그 침묵 속에서 하나님의 말씀이 들린다면 — 그것이 영원한 생명이 아니겠습니까?" — IX.10.25</div>
-      <p class="ch">11장 — 어머니의 마지막 말</p>
-      <p>어머니는 병이 들었습니다. 어느 날 그녀는 말했습니다: "아들아, 이 세상에서 내가 기뻐할 것은 하나도 없다. 내가 여기서 무엇을 더 해야 할지 모르겠구나. 세상에 대한 나의 소망은 다 사라졌다. 한 가지를 원했는데, 바로 죽기 전에 네가 그리스도인이 되는 것을 보는 것이었다. 하나님이 이보다 더 풍성하게 주셨구나."</p>
-      <p class="ch">12장 — 어머니의 죽음과 눈물</p>
-      <p>어머니는 열병으로 세상을 떠났습니다. 나는 울지 않으려 했습니다. 그러나 밤에 혼자 누웠을 때, 어머니에 대한 기억이 밀려왔습니다. 나는 울었습니다. 그 눈물이 내게 위안이 되었습니다. 주님 앞에 어머니를 위해 기도했습니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-10">
+<div class="b-heading">Liber X · 제10권</div><div class="b-sub">기억과 하나님 — 영혼의 내면 (397년경)</div>
+<div class="aug-text">
+<p class="ch">1장 — 주님을 알게 하소서</p>
+<p class="drop">주님을 알게 하여 주옵소서. 나 자신을 알게 하여 주옵소서. 내가 주님을 사랑하기 때문에 기도합니다. 주님의 얼굴을 구합니다.</p>
+<p class="ch">8장 — 기억이란 무엇인가</p>
+<p>기억은 광대한 뜰이요, 무한한 내면의 성소입니다. 거기에는 내가 경험한 것들, 들은 것들, 생각한 것들이 담겨 있습니다. 주님, 당신도 내 기억 안에 계십니까?</p>
+<p class="ch">27장 — 늦은 사랑</p>
+<p>너무 늦게 사랑했습니다! 오, 너무도 오래되고 너무도 새로우신 아름다움이여, 너무 늦게 사랑했습니다! 주님은 내 안에 계셨는데 나는 밖에 있었습니다.</p>
+<div class="hq">"주님이 나를 부르셨고 외치셨으며, 나의 귀를 뚫었습니다. 주님이 빛을 발하셨고 나의 눈먼 것을 몰아내셨습니다." — X.27.38</div>
+</div></div>
 
-  <!-- 제10권 -->
-  <div class="book-content" id="book-10">
-    <div class="b-heading">Liber X · 제10권</div>
-    <div class="b-sub">기억과 하나님 탐구 — 영혼의 내면 (글쓰기 당시, 397년경)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 당신을 알게 하소서</p>
-      <p class="drop">주님을 알게 하여 주옵소서. 나 자신을 알게 하여 주옵소서. 내가 주님을 사랑하기 때문에 기도합니다. 주님의 얼굴을 구합니다.</p>
-      <p class="ch">8장 — 기억이란 무엇인가</p>
-      <p>기억은 광대한 뜰이요, 무한한 내면의 성소입니다. 거기에는 내가 경험한 것들, 들은 것들, 생각한 것들이 담겨 있습니다. 그러나 주님, 당신도 내 기억 안에 계십니까? 나는 당신을 어디에서 발견했습니까?</p>
-      <p class="ch">23장 — 행복을 찾는 인간</p>
-      <p>모든 사람이 행복하기를 원합니다. 그러나 모든 사람이 같은 방식으로 행복을 구하지는 않습니다. 주님 안에 행복이 있습니다. 그것은 진리를 기뻐하는 것입니다. 그것이 행복한 삶입니다.</p>
-      <div class="hq">"너무 늦게 사랑했습니다! 오, 너무도 오래되고 너무도 새로우신 아름다움이여, 너무 늦게 사랑했습니다! 주님은 내 안에 계셨는데 나는 밖에 있었습니다." — X.27.38</div>
-      <p class="ch">27장 — 늦은 사랑</p>
-      <p>주님이 나를 부르셨고 외치셨으며, 나의 귀를 뚫었습니다. 주님이 빛을 발하셨고 빛을 비추셨으며, 나의 눈먼 것을 몰아내셨습니다. 주님이 향내를 풍기셨으며, 내가 호흡하여 주님을 간구하였습니다. 내가 맛보았고 주님을 갈망합니다. 주님이 나를 만지셨고, 내가 평화를 열망합니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-11">
+<div class="b-heading">Liber XI · 제11권</div><div class="b-sub">시간과 영원 — 창세기 1장 묵상</div>
+<div class="aug-text">
+<p class="ch">13장 — 창조 이전에 하나님은 무엇을 하셨는가</p>
+<p class="drop">사람들은 묻습니다: "하나님이 세상을 창조하기 전에 무엇을 하셨습니까?" 나는 대답합니다: 당신은 시간을 창조하셨습니다. 시간 이전에는 시간이 없었습니다. 따라서 "그 이전"이라는 것 자체가 없었습니다.</p>
+<div class="hq">"당신은 시간 안에 계시지 않습니다. 그러나 당신은 모든 시간을 창조하셨습니다." — XI.13.16</div>
+<p class="ch">20장 — 시간의 세 가지 형태</p>
+<p>과거, 현재, 미래. 그러나 엄밀히 말하면 이 셋은 현재 안에만 있습니다. 과거 것들의 현재는 기억이요, 현재 것들의 현재는 직관이며, 미래 것들의 현재는 기대입니다.</p>
+<p class="ch">27장 — 시간의 신비</p>
+<p>나는 시간이 무엇인지 알고 있습니다. 아무도 내게 묻지 않을 때는. 그러나 누군가 내게 묻는다면, 나는 모릅니다. 주님, 당신만이 영원히 현재이십니다.</p>
+</div></div>
 
-  <!-- 제11권 -->
-  <div class="book-content" id="book-11">
-    <div class="b-heading">Liber XI · 제11권</div>
-    <div class="b-sub">시간과 영원 — 창세기 1장 묵상</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 성경 묵상의 시작</p>
-      <p class="drop">주님, 당신의 성경은 당신의 말씀입니다. 당신의 말씀은 영원합니다. 하늘과 땅은 지나가겠지만 당신의 말씀은 지나가지 않습니다. 나로 하여금 당신의 말씀 안에서 쉬게 하여 주옵소서.</p>
-      <p class="ch">13장 — 창조 이전에 하나님은 무엇을 하셨는가</p>
-      <p>사람들은 묻습니다: "하나님이 세상을 창조하기 전에 무엇을 하셨습니까?" 나는 대답합니다: 당신은 시간을 창조하셨습니다. 시간 이전에는 시간이 없었습니다. 따라서 "그 이전"이라는 것 자체가 없었습니다.</p>
-      <div class="hq">"당신은 시간 안에 계시지 않습니다. 그러나 당신은 모든 시간을 창조하셨습니다. 모든 시간은 당신 안에 있습니다." — XI.13.16</div>
-      <p class="ch">20장 — 시간의 세 가지 형태</p>
-      <p>과거, 현재, 미래. 그러나 엄밀히 말하면 이 셋은 현재 안에만 있습니다. 과거 것들의 현재는 기억이요, 현재 것들의 현재는 직관이며, 미래 것들의 현재는 기대입니다.</p>
-      <p class="ch">27장 — 측정할 수 없는 시간</p>
-      <p>나는 시간이 무엇인지 알고 있습니다. 아무도 내게 묻지 않을 때는. 그러나 누군가 내게 묻는다면, 나는 모릅니다. 시간은 신비입니다. 주님, 당신만이 영원히 현재이십니다.</p>
-    </div>
-  </div>
+<div class="book-content" id="book-12">
+<div class="b-heading">Liber XII · 제12권</div><div class="b-sub">창조의 신비 — 무형의 질료와 하늘의 하늘</div>
+<div class="aug-text">
+<p class="ch">9장 — 하늘의 하늘</p>
+<p class="drop">하늘의 하늘은 당신의 집입니다. 그것은 지성적인 피조물로서, 당신의 영원성을 완전히 참여합니다. 그것이 변하지 않는 이유는 당신의 존재를 붙잡고 있기 때문입니다.</p>
+<div class="hq">"피조물은 변합니다. 그러나 당신은 변하지 않으십니다. 당신이 나를 붙잡을 때, 나도 변하지 않습니다." — XII.9.9</div>
+<p class="ch">25장 — 성경 해석의 다양성</p>
+<p>주님, 당신은 이 세상을 창조하실 때 단 하나의 의미만을 성경에 담지 않으셨습니다. 당신은 당신의 말씀이 여러 진리를 담도록 하셨습니다. 그 모든 해석에서 당신의 진리가 드러납니다.</p>
+</div></div>
 
-  <!-- 제12권 -->
-  <div class="book-content" id="book-12">
-    <div class="b-heading">Liber XII · 제12권</div>
-    <div class="b-sub">창조의 신비 — "무형의 질료"와 하늘의 하늘</div>
-    <div class="aug-text">
-      <p class="ch">3장 — 두 가지 창조물</p>
-      <p class="drop">주님은 태초에 두 가지를 창조하셨습니다. 하나는 하늘의 하늘 — 순수한 영적 피조물입니다. 다른 하나는 무형의 땅 — 아직 형태를 갖추지 않은 질료입니다. 이 두 가지에서 모든 피조물이 만들어졌습니다.</p>
-      <p class="ch">9장 — 하늘의 하늘</p>
-      <p>하늘의 하늘은 당신의 집입니다. 당신의 기쁨은 당신을 떠나지 않습니다. 그것은 지성적인 피조물로서, 당신의 영원성을 완전히 참여합니다. 그것이 변하지 않는 이유는 당신의 존재를 붙잡고 있기 때문입니다.</p>
-      <div class="hq">"피조물은 변합니다. 그러나 당신은 변하지 않으십니다. 당신이 나를 붙잡을 때, 나도 변하지 않습니다." — XII.9.9</div>
-      <p class="ch">25장 — 성경 해석의 다양성</p>
-      <p>누가 모세의 말을 올바로 이해합니까? 주님, 당신은 이 세상을 창조하실 때 단 하나의 의미만을 성경에 담지 않으셨습니다. 당신은 당신의 말씀이 여러 진리를 담도록 하셨습니다. 그 모든 해석에서 당신의 진리가 드러납니다.</p>
-    </div>
-  </div>
-
-  <!-- 제13권 -->
-  <div class="book-content" id="book-13">
-    <div class="b-heading">Liber XIII · 제13권</div>
-    <div class="b-sub">창조의 완성 — 안식일과 영원 (마지막 권)</div>
-    <div class="aug-text">
-      <p class="ch">1장 — 모든 것을 당신으로부터</p>
-      <p class="drop">주님, 나는 당신을 부릅니다. 당신은 내 안에서 저를 부르셨습니다. 나는 당신의 선하심의 넘침으로부터 나왔습니다. 그러나 나는 당신께서 주신 것이 없으면 존재하지도 않았을 것입니다.</p>
-      <p class="ch">9장 — 사랑이 무게다</p>
-      <p>나의 무게는 나의 사랑입니다. 어디서나 나는 사랑에 의해 끌려갑니다. 당신의 선물인 성령이 우리를 당신께로 올립니다. 불은 위로 타오릅니다. 돌은 아래로 떨어집니다. 기름은 물 위에 뜹니다. 사물들은 자기 무게에 따라 자기 자리를 찾습니다. 나의 무게는 나의 사랑입니다.</p>
-      <div class="hq">"당신의 선물인 사랑에 불타올라, 우리는 위로 올라갑니다. 우리는 당신의 마음을 향해 오릅니다." — XIII.9.10</div>
-      <p class="ch">36장 — 일곱째 날의 안식</p>
-      <p>주님, 당신은 우리에게 안식을 주십니다. 당신 안에서의 안식입니다. 당신은 우리를 만드셨고 우리의 마음은 당신 안에서 안식을 얻기까지 쉬지 못합니다. 당신이 영원한 안식이시기 때문입니다.</p>
-      <p class="ch">38장 — 마지막 기도</p>
-      <p>주님 하나님, 우리에게 평화를 주옵소서. 당신이 모든 것을 우리에게 주셨습니다. 우리에게 안식의 평화, 안식일의 평화, 저녁이 없는 평화를 주옵소서. 이 모든 훌륭한 것들은 당신에게서 왔습니다. 그것들이 당신에게로 돌아가는 것, 그것이 그들의 끝입니다.</p>
-      <div class="hq">"당신은 우리를 당신을 위해 만드셨습니다. 그리고 우리의 마음은 당신 안에서 안식을 얻기까지 쉬지 못합니다." — I.1.1 (참회록 처음이자 끝)</div>
-    </div>
-    <div class="aug-note">— 어거스틴의 참회록 13권 완 —<br>Aurelius Augustinus Hipponensis (354–430 AD)</div>
-  </div>
+<div class="book-content" id="book-13">
+<div class="b-heading">Liber XIII · 제13권</div><div class="b-sub">창조의 완성 — 안식일과 영원 (마지막 권)</div>
+<div class="aug-text">
+<p class="ch">9장 — 사랑이 무게다</p>
+<p class="drop">나의 무게는 나의 사랑입니다. 어디서나 나는 사랑에 의해 끌려갑니다. 불은 위로 타오릅니다. 돌은 아래로 떨어집니다. 사물들은 자기 무게에 따라 자기 자리를 찾습니다. 나의 무게는 나의 사랑입니다.</p>
+<div class="hq">"당신의 선물인 사랑에 불타올라, 우리는 위로 올라갑니다. 우리는 당신의 마음을 향해 오릅니다." — XIII.9.10</div>
+<p class="ch">36장 — 일곱째 날의 안식</p>
+<p>주님, 당신은 우리에게 안식을 주십니다. 당신 안에서의 안식입니다. 당신이 영원한 안식이시기 때문입니다.</p>
+<p class="ch">38장 — 마지막 기도</p>
+<p>주님 하나님, 우리에게 평화를 주옵소서. 당신이 모든 것을 우리에게 주셨습니다. 우리에게 안식의 평화, 안식일의 평화, 저녁이 없는 평화를 주옵소서.</p>
+<div class="hq">"당신은 우리를 당신을 위해 만드셨습니다. 그리고 우리의 마음은 당신 안에서 안식을 얻기까지 쉬지 못합니다." — I.1.1</div>
 </div>
+<div class="aug-note">— 어거스틴의 참회록 13권 완 (354–430 AD) —</div>
+</div>
+</div><!-- /aug-screen -->
 
-<!-- ══════════════════
-     나의 참회록 화면
-     ══════════════════ -->
+<!-- 나의 참회록 화면 -->
 <div class="screen memoir-screen" id="screen-memoir">
-  <div class="section-tabs" id="sectionTabs"></div>
-  <div class="sec on" id="sec-confession">
-    <div class="sec-head"><div class="sec-ic ic-conf">✦</div><div><div class="sec-title">참회와 회한</div><div class="sec-desc">하나님 앞에 내 삶의 죄와 허물을 고백합니다</div></div></div>
-    <textarea class="jta" id="t-confession" placeholder="주님, 저는 이 생을 살아오면서...&#10;&#10;어거스틴이 고백했듯, 저도 돌아보면 후회되는 일들이 있습니다.&#10;사랑해야 했을 사람을 사랑하지 못했던 순간들..."></textarea>
-    <div class="wc" id="wc-confession">0 자</div>
-  </div>
-  <div class="sec" id="sec-gratitude">
-    <div class="sec-head"><div class="sec-ic ic-grat">☀</div><div><div class="sec-title">감사와 은혜</div><div class="sec-desc">이 생에서 받은 은혜들, 기억하고 싶은 순간들</div></div></div>
-    <textarea class="jta" id="t-gratitude" placeholder="돌이켜보면 감사한 것들이 참 많습니다..."></textarea>
-    <div class="wc" id="wc-gratitude">0 자</div>
-  </div>
-  <div class="sec" id="sec-prayer">
-    <div class="sec-head"><div class="sec-ic ic-pray">☽</div><div><div class="sec-title">기도와 간구</div><div class="sec-desc">남은 시간, 사랑하는 이들을 위한 기도</div></div></div>
-    <textarea class="jta" id="t-prayer" placeholder="하나님 아버지, 이 생의 마지막을 바라보면서..."></textarea>
-    <div class="wc" id="wc-prayer">0 자</div>
-  </div>
-  <div class="sec" id="sec-wisdom">
-    <div class="sec-head"><div class="sec-ic ic-wisd">◈</div><div><div class="sec-title">삶의 지혜</div><div class="sec-desc">살아오면서 깨달은 것들, 다음 세대에 전할 말</div></div></div>
-    <textarea class="jta" id="t-wisdom" placeholder="내가 살면서 배운 가장 중요한 것은..."></textarea>
-    <div class="wc" id="wc-wisdom">0 자</div>
-  </div>
-  <div class="sec" id="sec-letters">
-    <div class="sec-head"><div class="sec-ic ic-lett">✉</div><div><div class="sec-title">자녀에게</div><div class="sec-desc">한 명 한 명에게, 마음 깊은 곳의 말들</div></div></div>
-    <div id="letterList"></div>
-    <button class="add-btn" onclick="addLetter('letters')">+ 편지 추가</button>
-    <div class="letter-editor" id="letterEd">
-      <input class="l-to" id="letterTo" placeholder="받는 이: 예) 사랑하는 아들 민준에게...">
-      <textarea class="jta" id="t-letter" style="min-height:240px" placeholder="사랑하는 아이에게..."></textarea>
-      <div class="btn-row"><button class="t-btn gold" onclick="saveLetter()">저장</button><button class="t-btn" onclick="closeLetter()">닫기</button></div>
-    </div>
-  </div>
-  <div class="sec" id="sec-grandchildren">
-    <div class="sec-head"><div class="sec-ic ic-grat">✿</div><div><div class="sec-title">손자손녀에게</div><div class="sec-desc">다음 세대에게 남기는 따뜻한 이야기</div></div></div>
-    <div id="grandList"></div>
-    <button class="add-btn" onclick="addLetter('grand')">+ 편지 추가</button>
-    <div class="letter-editor" id="grandEd">
-      <input class="l-to" id="grandTo" placeholder="받는 이: 예) 사랑하는 손자 지호에게...">
-      <textarea class="jta" id="t-grand" style="min-height:240px" placeholder="할아버지/할머니가 너에게..."></textarea>
-      <div class="btn-row"><button class="t-btn gold" onclick="saveGrand()">저장</button><button class="t-btn" onclick="closeGrand()">닫기</button></div>
-    </div>
-  </div>
-  <div class="sec" id="sec-will">
-    <div class="sec-head"><div class="sec-ic ic-will">⊟</div><div><div class="sec-title">유언 정리</div><div class="sec-desc">사랑하는 이들에게 남기는 마지막 뜻</div></div></div>
-    <div class="wb"><div class="wb-h">✟ 나의 신앙 고백</div><textarea id="w-faith" placeholder="나는 예수 그리스도를 나의 주님과 구원자로 믿으며..."></textarea></div>
-    <div class="wb"><div class="wb-h">❤ 가족에게 남기는 말</div><textarea id="w-family" placeholder="사랑하는 배우자에게, 자녀들에게..."></textarea></div>
-    <div class="wb"><div class="wb-h">◻ 재산 및 물건의 정리</div><textarea id="w-assets" placeholder="보관된 중요한 문서들의 위치..."></textarea></div>
-    <div class="wb"><div class="wb-h">✿ 장례에 대한 바람</div><textarea id="w-funeral" placeholder="장례는 간소하게, 찬양은...&#10;묘비에 새기고 싶은 말..."></textarea></div>
-    <div class="wb"><div class="wb-h">◈ 정신적 유산</div><textarea id="w-legacy" placeholder="내가 살면서 지키려 했던 가치들..."></textarea></div>
-    <div class="wb"><div class="wb-h">⊟ 부탁과 당부</div><textarea id="w-wish" placeholder="이것만큼은 꼭 지켜주기 바랍니다..."></textarea></div>
-  </div>
-  <div class="sec" id="sec-timeline">
-    <div class="sec-head"><div class="sec-ic ic-tl">◷</div><div><div class="sec-title">삶의 연대기</div><div class="sec-desc">시기별로 돌아보는 나의 이야기</div></div></div>
-    <div id="tlWrap"></div>
-    <button class="add-decade-btn" onclick="addDecade()">+ 시기 추가</button>
-  </div>
-  <div class="sec" id="sec-faith">
-    <div class="sec-head"><div class="sec-ic ic-conf">✟</div><div><div class="sec-title">영적 여정</div><div class="sec-desc">신앙의 위기, 회복, 하나님을 만난 순간들</div></div></div>
-    <div class="int-block"><div class="int-h">✟ 처음 믿음을 갖게 된 계기</div><textarea class="int-ta" id="f-begin" placeholder="언제, 어떻게 예수님을 만나게 되었는지..."></textarea></div>
-    <div class="int-block"><div class="int-h">◈ 신앙의 위기와 질문들</div><textarea class="int-ta" id="f-crisis" placeholder="하나님을 의심했던 순간들..."></textarea></div>
-    <div class="int-block"><div class="int-h">☀ 회복의 순간들</div><textarea class="int-ta" id="f-restore" placeholder="다시 하나님께 돌아왔던 계기..."></textarea></div>
-    <div class="int-block"><div class="int-h">✦ 결정적인 영적 만남</div><textarea class="int-ta" id="f-encounter" placeholder="하나님의 임재를 느꼈던 순간들..."></textarea></div>
-    <div class="int-block"><div class="int-h">☽ 지금 나의 신앙</div><textarea class="int-ta" id="f-now" placeholder="인생 말년에 이르러 나의 신앙은..."></textarea></div>
-  </div>
-  <div class="sec" id="sec-relations">
-    <div class="sec-head"><div class="sec-ic ic-rel">❦</div><div><div class="sec-title">관계 회복 일지</div><div class="sec-desc">화해, 용서, 감사 전하지 못한 사람들</div></div></div>
-    <div id="relWrap"></div>
-    <button class="add-btn" onclick="addRelation()" style="margin-top:4px">+ 관계 추가</button>
-  </div>
-  <div class="sec" id="sec-photos">
-    <div class="sec-head"><div class="sec-ic ic-ph">◻</div><div><div class="sec-title">사진 기억 메모</div><div class="sec-desc">소중한 사진들에 얽힌 이야기</div></div></div>
-    <div id="photoList"></div>
-    <button class="add-btn" onclick="addPhoto()" style="margin-top:4px">+ 기억 추가</button>
-  </div>
-  <div class="sec" id="sec-intercession">
-    <div class="sec-head"><div class="sec-ic ic-int">❋</div><div><div class="sec-title">중보 기도</div><div class="sec-desc">자녀, 교회, 민족, 세상을 위한 기도</div></div></div>
-    <div class="int-block"><div class="int-h">❤ 자녀와 후손을 위한 기도</div><textarea class="int-ta" id="i-family" placeholder="자녀들의 이름을 부르며 드리는 기도..."></textarea></div>
-    <div class="int-block"><div class="int-h">✟ 교회와 신앙 공동체를 위한 기도</div><textarea class="int-ta" id="i-church" placeholder="한국 교회를 위해, 다음 세대 믿음을 위해..."></textarea></div>
-    <div class="int-block"><div class="int-h">◈ 대한민국과 민족을 위한 기도</div><textarea class="int-ta" id="i-nation" placeholder="이 나라의 젊은이들을 위해..."></textarea></div>
-    <div class="int-block"><div class="int-h">☀ 선교지와 열방을 위한 기도</div><textarea class="int-ta" id="i-mission" placeholder="아직 복음을 듣지 못한 민족들을 위해..."></textarea></div>
-    <div class="int-block"><div class="int-h">❋ 마지막으로 드리는 기도</div><textarea class="int-ta" id="i-final" placeholder="주님, 이 생을 마치면서 드리는 마지막 기도..."></textarea></div>
-  </div>
-</div>
+<div class="section-tabs" id="sectionTabs"></div>
+<div class="sec on" id="sec-confession"><div class="sec-head"><div class="sec-ic ic-conf">✦</div><div><div class="sec-title">참회와 회한</div><div class="sec-desc">하나님 앞에 내 삶의 죄와 허물을 고백합니다</div></div></div><textarea class="jta" id="t-confession" placeholder="주님, 저는 이 생을 살아오면서..."></textarea><div class="wc" id="wc-confession">0 자</div></div>
+<div class="sec" id="sec-gratitude"><div class="sec-head"><div class="sec-ic ic-grat">☀</div><div><div class="sec-title">감사와 은혜</div><div class="sec-desc">이 생에서 받은 은혜들</div></div></div><textarea class="jta" id="t-gratitude" placeholder="돌이켜보면 감사한 것들이 참 많습니다..."></textarea><div class="wc" id="wc-gratitude">0 자</div></div>
+<div class="sec" id="sec-prayer"><div class="sec-head"><div class="sec-ic ic-pray">☽</div><div><div class="sec-title">기도와 간구</div><div class="sec-desc">남은 시간, 사랑하는 이들을 위한 기도</div></div></div><textarea class="jta" id="t-prayer" placeholder="하나님 아버지, 이 생의 마지막을 바라보면서..."></textarea><div class="wc" id="wc-prayer">0 자</div></div>
+<div class="sec" id="sec-wisdom"><div class="sec-head"><div class="sec-ic ic-wisd">◈</div><div><div class="sec-title">삶의 지혜</div><div class="sec-desc">살아오면서 깨달은 것들</div></div></div><textarea class="jta" id="t-wisdom" placeholder="내가 살면서 배운 가장 중요한 것은..."></textarea><div class="wc" id="wc-wisdom">0 자</div></div>
+<div class="sec" id="sec-letters"><div class="sec-head"><div class="sec-ic ic-lett">✉</div><div><div class="sec-title">자녀에게</div><div class="sec-desc">한 명 한 명에게, 마음 깊은 곳의 말들</div></div></div><div id="letterList"></div><button class="add-btn" onclick="addLetter('letters')">+ 편지 추가</button><div class="letter-editor" id="letterEd"><input class="l-to" id="letterTo" placeholder="받는 이: 사랑하는 아들에게..."><textarea class="jta" id="t-letter" style="min-height:240px" placeholder="사랑하는 아이에게..."></textarea><div class="btn-row"><button class="t-btn gold" onclick="saveLetter()">저장</button><button class="t-btn" onclick="closeLetter()">닫기</button></div></div></div>
+<div class="sec" id="sec-grandchildren"><div class="sec-head"><div class="sec-ic ic-grat">✿</div><div><div class="sec-title">손자손녀에게</div><div class="sec-desc">다음 세대에게 남기는 따뜻한 이야기</div></div></div><div id="grandList"></div><button class="add-btn" onclick="addLetter('grand')">+ 편지 추가</button><div class="letter-editor" id="grandEd"><input class="l-to" id="grandTo" placeholder="받는 이: 사랑하는 손자에게..."><textarea class="jta" id="t-grand" style="min-height:240px" placeholder="할아버지/할머니가 너에게..."></textarea><div class="btn-row"><button class="t-btn gold" onclick="saveGrand()">저장</button><button class="t-btn" onclick="closeGrand()">닫기</button></div></div></div>
+<div class="sec" id="sec-will"><div class="sec-head"><div class="sec-ic ic-will">⊟</div><div><div class="sec-title">유언 정리</div><div class="sec-desc">사랑하는 이들에게 남기는 마지막 뜻</div></div></div>
+<div class="wb"><div class="wb-h">✟ 나의 신앙 고백</div><textarea id="w-faith" placeholder="나는 예수 그리스도를 나의 주님과 구원자로 믿으며..."></textarea></div>
+<div class="wb"><div class="wb-h">❤ 가족에게 남기는 말</div><textarea id="w-family" placeholder="사랑하는 배우자에게, 자녀들에게..."></textarea></div>
+<div class="wb"><div class="wb-h">◻ 재산 및 물건의 정리</div><textarea id="w-assets" placeholder="보관된 중요한 문서들의 위치..."></textarea></div>
+<div class="wb"><div class="wb-h">✿ 장례에 대한 바람</div><textarea id="w-funeral" placeholder="장례는 간소하게, 묘비에 새기고 싶은 말..."></textarea></div>
+<div class="wb"><div class="wb-h">◈ 정신적 유산</div><textarea id="w-legacy" placeholder="내가 살면서 지키려 했던 가치들..."></textarea></div>
+<div class="wb"><div class="wb-h">⊟ 부탁과 당부</div><textarea id="w-wish" placeholder="이것만큼은 꼭 지켜주기 바랍니다..."></textarea></div></div>
+<div class="sec" id="sec-timeline"><div class="sec-head"><div class="sec-ic ic-tl">◷</div><div><div class="sec-title">삶의 연대기</div><div class="sec-desc">시기별로 돌아보는 나의 이야기</div></div></div><div id="tlWrap"></div><button class="add-decade-btn" onclick="addDecade()">+ 시기 추가</button></div>
+<div class="sec" id="sec-faith"><div class="sec-head"><div class="sec-ic ic-conf">✟</div><div><div class="sec-title">영적 여정</div><div class="sec-desc">신앙의 위기, 회복, 하나님을 만난 순간들</div></div></div>
+<div class="int-block"><div class="int-h">✟ 처음 믿음을 갖게 된 계기</div><textarea class="int-ta" id="f-begin" placeholder="언제, 어떻게 예수님을 만나게 되었는지..."></textarea></div>
+<div class="int-block"><div class="int-h">◈ 신앙의 위기와 질문들</div><textarea class="int-ta" id="f-crisis" placeholder="하나님을 의심했던 순간들..."></textarea></div>
+<div class="int-block"><div class="int-h">☀ 회복의 순간들</div><textarea class="int-ta" id="f-restore" placeholder="다시 하나님께 돌아왔던 계기..."></textarea></div>
+<div class="int-block"><div class="int-h">✦ 결정적인 영적 만남</div><textarea class="int-ta" id="f-encounter" placeholder="하나님의 임재를 느꼈던 순간들..."></textarea></div>
+<div class="int-block"><div class="int-h">☽ 지금 나의 신앙</div><textarea class="int-ta" id="f-now" placeholder="인생 말년에 이르러 나의 신앙은..."></textarea></div></div>
+<div class="sec" id="sec-relations"><div class="sec-head"><div class="sec-ic ic-rel">❦</div><div><div class="sec-title">관계 회복 일지</div><div class="sec-desc">화해, 용서, 감사 전하지 못한 사람들</div></div></div><div id="relWrap"></div><button class="add-btn" onclick="addRelation()" style="margin-top:4px">+ 관계 추가</button></div>
+<div class="sec" id="sec-photos"><div class="sec-head"><div class="sec-ic ic-ph">◻</div><div><div class="sec-title">사진 기억 메모</div><div class="sec-desc">소중한 사진들에 얽힌 이야기</div></div></div><div id="photoList"></div><button class="add-btn" onclick="addPhoto()" style="margin-top:4px">+ 기억 추가</button></div>
+<div class="sec" id="sec-intercession"><div class="sec-head"><div class="sec-ic ic-int">❋</div><div><div class="sec-title">중보 기도</div><div class="sec-desc">자녀, 교회, 민족, 세상을 위한 기도</div></div></div>
+<div class="int-block"><div class="int-h">❤ 자녀와 후손을 위한 기도</div><textarea class="int-ta" id="i-family" placeholder="자녀들의 이름을 부르며 드리는 기도..."></textarea></div>
+<div class="int-block"><div class="int-h">✟ 교회와 신앙 공동체를 위한 기도</div><textarea class="int-ta" id="i-church" placeholder="한국 교회를 위해..."></textarea></div>
+<div class="int-block"><div class="int-h">◈ 대한민국과 민족을 위한 기도</div><textarea class="int-ta" id="i-nation" placeholder="이 나라의 젊은이들을 위해..."></textarea></div>
+<div class="int-block"><div class="int-h">☀ 선교지와 열방을 위한 기도</div><textarea class="int-ta" id="i-mission" placeholder="아직 복음을 듣지 못한 민족들을 위해..."></textarea></div>
+<div class="int-block"><div class="int-h">❋ 마지막으로 드리는 기도</div><textarea class="int-ta" id="i-final" placeholder="주님, 이 생을 마치면서 드리는 마지막 기도..."></textarea></div></div>
+</div><!-- /memoir -->
 
 <!-- 설정 화면 -->
 <div class="screen" id="screen-setting">
-  <div class="setting-screen">
-    <div class="setting-card">
-      <div class="setting-card-title" style="color:#4a9a6a">☁ Google Drive 연동</div>
-      <p>계정: aijiakorea@gmail.com<br>폴더: 참회록 (Chamhoerok)<br>저장 버튼을 누르면 자동 백업됩니다</p>
-    </div>
-    <div class="setting-card">
-      <div class="setting-card-title">📱 앱 링크</div>
-      <span class="link">https://aijiakorea-svg.github.io/chamhoerok/</span>
-      <button class="t-btn" onclick="copyLink()" style="font-size:12px;padding:8px 16px">링크 복사</button>
-    </div>
-    <div class="setting-card">
-      <div class="setting-card-title">📄 내보내기</div>
-      <button class="t-btn gold" onclick="exportAll()" style="width:100%;padding:12px;font-size:14px">전체 내용 내보내기 (.txt)</button>
-    </div>
-    <div class="setting-card" style="background:var(--parchment)">
-      <div class="setting-card-title">📖 어거스틴의 참회록</div>
-      <p>Aurelius Augustinus (354–430 AD)<br>총 13권 전체 주요 내용 수록<br><br>
-      제1권 유년기 · 제2권 청년의 죄 · 제3권 카르타고<br>
-      제4권 친구의 죽음 · 제5권 로마·밀라노<br>
-      제6권 모니카·암브로시우스 · 제7권 신플라톤<br>
-      제8권 회심 · 제9권 세례·어머니의 죽음<br>
-      제10권 기억 · 제11권 시간 · 제12-13권 창조</p>
-    </div>
-  </div>
-</div>
-
+<div class="setting-screen">
+<div class="setting-card"><div class="setting-card-title" style="color:#3a8a5a">☁ Google Drive 연동</div><p>계정: aijiakorea@gmail.com<br>폴더: 참회록 (Chamhoerok)<br>저장 버튼을 누르면 자동 백업됩니다</p></div>
+<div class="setting-card"><div class="setting-card-title">📱 앱 링크</div><span class="slink">https://aijiakorea-svg.github.io/chamhoerok/</span><button class="t-btn" onclick="copyLink()" style="font-size:12px;padding:8px 16px">링크 복사</button></div>
+<div class="setting-card"><div class="setting-card-title">📄 내보내기</div><button class="t-btn gold" onclick="exportAll()" style="width:100%;padding:12px;font-size:14px">전체 내용 내보내기 (.txt)</button></div>
+<div class="setting-card" style="background:var(--parchment)"><div class="setting-card-title">📖 어거스틴의 참회록</div><p>Aurelius Augustinus (354–430 AD)<br>총 13권 전체 주요 내용 수록<br><br>1권 유년기 · 2권 청년의 죄 · 3권 카르타고<br>4권 친구의 죽음 · 5권 로마·밀라노<br>6권 모니카·암브로시우스 · 7권 신플라톤<br>8권 회심 · 9권 세례·어머니의 죽음<br>10권 기억 · 11권 시간 · 12·13권 창조와 영원</p></div>
+</div></div>
 </div><!-- /main -->
 
 <nav class="bottom-nav">
-  <button class="bnav-item" id="bnav-aug" onclick="switchScreen('aug')">
-    <span class="bic">📖</span>어거스틴
-  </button>
-  <button class="bnav-item active" id="bnav-memoir" onclick="switchScreen('memoir')">
-    <span class="bic">✦</span>나의 참회록
-  </button>
-  <button class="bnav-item" id="bnav-setting" onclick="switchScreen('setting')">
-    <span class="bic">⚙</span>설정
-  </button>
+  <button class="bnav-item" id="bnav-aug" onclick="switchScreen('aug')"><span class="bic">📖</span>어거스틴</button>
+  <button class="bnav-item active" id="bnav-memoir" onclick="switchScreen('memoir')"><span class="bic">✦</span>나의 참회록</button>
+  <button class="bnav-item" id="bnav-setting" onclick="switchScreen('setting')"><span class="bic">⚙</span>설정</button>
 </nav>
-
 <div class="notif" id="notif"></div>
 
 <script>
 const DRIVE_FOLDER_ID='1yGIpocRA7HNUX5KLApP58RK8MRknxLH9';
 const todayKR=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'});
 
-function switchScreen(name){
+function switchScreen(n){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('screen-'+name).classList.add('on');
-  document.getElementById('bnav-'+name).classList.add('active');
+  document.getElementById('screen-'+n).classList.add('on');
+  document.getElementById('bnav-'+n).classList.add('active');
   window.scrollTo(0,0);
 }
 
-// 어거스틴 권 네비게이션
-const books=[
-  {id:'1',label:'제1권'},{id:'2',label:'제2권'},{id:'3',label:'제3권'},
-  {id:'4',label:'제4권'},{id:'5',label:'제5권'},{id:'6',label:'제6권'},
-  {id:'7',label:'제7권'},{id:'8',label:'제8권'},{id:'9',label:'제9권'},
-  {id:'10',label:'제10권'},{id:'11',label:'제11권'},{id:'12',label:'제12권'},{id:'13',label:'제13권'}
-];
+const books=['1','2','3','4','5','6','7','8','9','10','11','12','13'];
 const bnav=document.getElementById('bookNav');
 books.forEach((b,i)=>{
   const btn=document.createElement('button');
   btn.className='bnav-btn'+(i===0?' active':'');
-  btn.textContent=b.label;
+  btn.textContent='제'+b+'권';
   btn.onclick=()=>{
     document.querySelectorAll('.bnav-btn').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.book-content').forEach(x=>x.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById('book-'+b.id).classList.add('active');
+    document.getElementById('book-'+b).classList.add('active');
     window.scrollTo(0,52);
   };
   bnav.appendChild(btn);
 });
 
-// 섹션 탭
 const sections=[
   {id:'confession',label:'✦ 참회'},{id:'gratitude',label:'☀ 감사'},
   {id:'prayer',label:'☽ 기도'},{id:'wisdom',label:'◈ 지혜'},
@@ -596,21 +405,19 @@ sections.forEach((s,i)=>{
   tabBar.appendChild(btn);
 });
 
-// 글자수
 ['confession','gratitude','prayer','wisdom'].forEach(id=>{
   const ta=document.getElementById('t-'+id),wc=document.getElementById('wc-'+id);
   if(ta&&wc)ta.addEventListener('input',()=>{wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';});
 });
 
-// 편지
 let letters=[],grandLetters=[];
-function renderLetterList(arr,listId,openFn){
+function renderLL(arr,listId,openFn){
   const list=document.getElementById(listId);list.innerHTML='';
   arr.forEach((l,i)=>{
-    const card=document.createElement('div');card.className='lcard';
+    const c=document.createElement('div');c.className='lcard';
     const prev=l.content?(l.content.substring(0,30).replace(/\n/g,' ')+'...'):'편지를 작성해 주세요';
-    card.innerHTML=`<div><div class="lname">${l.to}</div><div class="lprev">${prev}</div></div><span style="color:var(--gold-light);font-size:15px">→</span>`;
-    card.onclick=()=>openFn(i);list.appendChild(card);
+    c.innerHTML='<div><div class="lname">'+l.to+'</div><div class="lprev">'+prev+'</div></div><span style="color:var(--gold-light);font-size:15px">→</span>';
+    c.onclick=()=>openFn(i);list.appendChild(c);
   });
 }
 function addLetter(type){
@@ -622,55 +429,51 @@ function addLetter(type){
 }
 function openLetterByIdx(i){const l=letters[i];document.getElementById('letterTo').value=l.to;document.getElementById('t-letter').value=l.content||'';document.getElementById('letterEd').classList.add('on');}
 function openGrandByIdx(i){const l=grandLetters[i];document.getElementById('grandTo').value=l.to;document.getElementById('t-grand').value=l.content||'';document.getElementById('grandEd').classList.add('on');}
-function saveLetter(){const to=document.getElementById('letterTo').value.trim();const content=document.getElementById('t-letter').value;if(!to)return;const idx=letters.findIndex(l=>l.to===to);if(idx>=0)letters[idx].content=content;else letters.push({to,content});renderLetterList(letters,'letterList',openLetterByIdx);showNotif('편지 저장됨','success');}
-function saveGrand(){const to=document.getElementById('grandTo').value.trim();const content=document.getElementById('t-grand').value;if(!to)return;const idx=grandLetters.findIndex(l=>l.to===to);if(idx>=0)grandLetters[idx].content=content;else grandLetters.push({to,content});renderLetterList(grandLetters,'grandList',openGrandByIdx);showNotif('편지 저장됨','success');}
+function saveLetter(){const to=document.getElementById('letterTo').value.trim();const ct=document.getElementById('t-letter').value;if(!to)return;const idx=letters.findIndex(l=>l.to===to);if(idx>=0)letters[idx].content=ct;else letters.push({to,content:ct});renderLL(letters,'letterList',openLetterByIdx);showNotif('편지 저장됨','success');}
+function saveGrand(){const to=document.getElementById('grandTo').value.trim();const ct=document.getElementById('t-grand').value;if(!to)return;const idx=grandLetters.findIndex(l=>l.to===to);if(idx>=0)grandLetters[idx].content=ct;else grandLetters.push({to,content:ct});renderLL(grandLetters,'grandList',openGrandByIdx);showNotif('편지 저장됨','success');}
 function closeLetter(){document.getElementById('letterEd').classList.remove('on');}
 function closeGrand(){document.getElementById('grandEd').classList.remove('on');}
 
-// 연대기
 let decades=[{label:'유년기',hint:'태어나서 학창시절까지...'},{label:'청년기',hint:'20~30대의 나...'},{label:'장년기',hint:'40~50대의 나...'},{label:'노년기',hint:'60대 이후의 나...'}];
 let tlData={};
-function renderTimeline(){
-  const wrap=document.getElementById('tlWrap');wrap.innerHTML='';
+function renderTL(){
+  const w=document.getElementById('tlWrap');w.innerHTML='';
   decades.forEach((d,i)=>{
-    const row=document.createElement('div');row.className='tl-item';
-    row.innerHTML=`<div class="tl-left"><div class="tl-label">${d.label}</div><div class="tl-dot"></div>${i<decades.length-1?'<div class="tl-line"></div>':''}</div><textarea class="tl-ta" data-key="tl-${i}" placeholder="${d.hint}">${tlData['tl-'+i]||''}</textarea>`;
-    wrap.appendChild(row);
-    row.querySelector('textarea').addEventListener('input',e=>{tlData[e.target.dataset.key]=e.target.value;});
+    const r=document.createElement('div');r.className='tl-item';
+    r.innerHTML='<div class="tl-left"><div class="tl-label">'+d.label+'</div><div class="tl-dot"></div>'+(i<decades.length-1?'<div class="tl-line"></div>':'')+'</div><textarea class="tl-ta" data-key="tl-'+i+'" placeholder="'+d.hint+'">'+(tlData['tl-'+i]||'')+'</textarea>';
+    w.appendChild(r);
+    r.querySelector('textarea').addEventListener('input',e=>{tlData[e.target.dataset.key]=e.target.value;});
   });
 }
-function addDecade(){const label=prompt('시기 이름','');if(label){decades.push({label,hint:'이 시기의 이야기들...'});renderTimeline();}}
+function addDecade(){const l=prompt('시기 이름','');if(l){decades.push({label:l,hint:'이 시기의 이야기들...'});renderTL();}}
 
-// 관계
 let relations=[];
 const relTypes=[{tag:'용서',bg:'rgba(122,24,24,.15)',tc:'#c05050'},{tag:'화해',bg:'rgba(26,80,48,.12)',tc:'#3a8a5a'},{tag:'감사',bg:'rgba(160,112,32,.15)',tc:'#a07020'},{tag:'미안함',bg:'rgba(74,58,128,.12)',tc:'#7060b0'}];
-function renderRelations(){
-  const wrap=document.getElementById('relWrap');wrap.innerHTML='';
+function renderRel(){
+  const w=document.getElementById('relWrap');w.innerHTML='';
   relations.forEach((r,i)=>{
     const rt=relTypes.find(t=>t.tag===r.type)||relTypes[0];
-    const item=document.createElement('div');item.className='rel-item';
-    item.innerHTML=`<div class="rel-head"><div class="rel-tag" style="background:${rt.bg};color:${rt.tc}">${r.type}</div><input class="rel-name-in" value="${r.name||''}" placeholder="이름 또는 관계" onchange="relations[${i}].name=this.value"></div><textarea class="rel-ta" placeholder="이 분께 전하고 싶은 말...">${r.content||''}</textarea>`;
-    item.querySelector('textarea').addEventListener('input',e=>{relations[i].content=e.target.value;});
-    wrap.appendChild(item);
+    const it=document.createElement('div');it.className='rel-item';
+    it.innerHTML='<div class="rel-head"><div class="rel-tag" style="background:'+rt.bg+';color:'+rt.tc+'">'+r.type+'</div><input class="rel-name-in" value="'+(r.name||'')+'" placeholder="이름 또는 관계" onchange="relations['+i+'].name=this.value"></div><textarea class="rel-ta" placeholder="이 분께 전하고 싶은 말...">'+(r.content||'')+'</textarea>';
+    it.querySelector('textarea').addEventListener('input',e=>{relations[i].content=e.target.value;});
+    w.appendChild(it);
   });
 }
-function addRelation(){const type=prompt('유형: 용서 / 화해 / 감사 / 미안함','용서');if(!type)return;const name=prompt('이름 또는 관계','');if(name===null)return;relations.push({type,name,content:''});renderRelations();}
+function addRelation(){const t=prompt('유형: 용서/화해/감사/미안함','용서');if(!t)return;const n=prompt('이름','');if(n===null)return;relations.push({type:t,name:n,content:''});renderRel();}
 
-// 사진
 let photos=[];
-function renderPhotos(){
-  const list=document.getElementById('photoList');list.innerHTML='';
+function renderPh(){
+  const l=document.getElementById('photoList');l.innerHTML='';
   photos.forEach((p,i)=>{
-    const item=document.createElement('div');item.className='photo-item';
-    item.innerHTML=`<div class="photo-head"><input class="photo-date-in" value="${p.date||''}" placeholder="연도/날짜" onchange="photos[${i}].date=this.value"><input class="photo-title-in" value="${p.title||''}" placeholder="어떤 사진인지..." onchange="photos[${i}].title=this.value"></div><textarea class="photo-ta" placeholder="이 사진 속 이야기...">${p.memo||''}</textarea>`;
-    item.querySelector('textarea').addEventListener('input',e=>{photos[i].memo=e.target.value;});
-    list.appendChild(item);
+    const it=document.createElement('div');it.className='photo-item';
+    it.innerHTML='<div class="photo-head"><input class="photo-date-in" value="'+(p.date||'')+'" placeholder="연도/날짜" onchange="photos['+i+'].date=this.value"><input class="photo-title-in" value="'+(p.title||'')+'" placeholder="어떤 사진인지..." onchange="photos['+i+'].title=this.value"></div><textarea class="photo-ta" placeholder="이 사진 속 이야기...">'+(p.memo||'')+'</textarea>';
+    it.querySelector('textarea').addEventListener('input',e=>{photos[i].memo=e.target.value;});
+    l.appendChild(it);
   });
 }
-function addPhoto(){photos.push({date:'',title:'',memo:''});renderPhotos();setTimeout(()=>{const items=document.querySelectorAll('.photo-title-in');if(items.length)items[items.length-1].focus();},50);}
+function addPhoto(){photos.push({date:'',title:'',memo:''});renderPh();setTimeout(()=>{const x=document.querySelectorAll('.photo-title-in');if(x.length)x[x.length-1].focus();},50);}
 
-// 데이터
-function getAllData(){
+function gd(){
   return{
     confession:document.getElementById('t-confession').value,
     gratitude:document.getElementById('t-gratitude').value,
@@ -683,45 +486,82 @@ function getAllData(){
     savedAt:new Date().toISOString()
   };
 }
-function buildText(d){
-  let o='╔══════════════════════════════════════════╗\n║          나  의  참  회  록              ║\n╚══════════════════════════════════════════╝\n기록일: '+todayKR+'\n\n';
-  [['참회',d.confession],['감사',d.gratitude],['기도',d.prayer],['지혜',d.wisdom]].forEach(([t,v])=>{if(v&&v.trim())o+='\n▣ '+t+'\n'+'─'.repeat(40)+'\n'+v+'\n';});
-  if(d.faith)Object.entries(d.faith).forEach(([k,v])=>{if(v&&v.trim())o+='\n[영적여정-'+k+']\n'+v+'\n';});
-  decades.forEach((dec,i)=>{const v=d.tlData['tl-'+i];if(v&&v.trim())o+='\n[연대기-'+dec.label+']\n'+v+'\n';});
-  if(d.relations)d.relations.forEach(r=>{if(r.content)o+='\n['+r.type+'-'+r.name+']\n'+r.content+'\n';});
-  o+='\n\n╔══════════════════════╗\n║    유  언  정  리    ║\n╚══════════════════════╝\n';
-  if(d.will)Object.entries(d.will).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+k+']\n'+v+'\n';});
-  o+='\n\n╔══════════════════════╗\n║    편  지  모  음    ║\n╚══════════════════════╝\n';
-  if(d.letters)d.letters.forEach(l=>{if(l.content)o+='\n▣ '+l.to+'\n'+l.content+'\n';});
-  if(d.grandLetters)d.grandLetters.forEach(l=>{if(l.content)o+='\n▣ '+l.to+'\n'+l.content+'\n';});
-  o+='\n\n╔══════════════════════╗\n║    중  보  기  도    ║\n╚══════════════════════╝\n';
-  if(d.intercession)Object.entries(d.intercession).forEach(([k,v])=>{if(v&&v.trim())o+='\n['+k+']\n'+v+'\n';});
+function bt(d){
+  let o='나의 참회록\n기록일: '+todayKR+'\n\n';
+  [['참회',d.confession],['감사',d.gratitude],['기도',d.prayer],['지혜',d.wisdom]].forEach(([t,v])=>{if(v&&v.trim())o+='['+t+']\n'+v+'\n\n';});
+  if(d.faith)Object.entries(d.faith).forEach(([k,v])=>{if(v&&v.trim())o+='[영적여정-'+k+']\n'+v+'\n\n';});
+  decades.forEach((dec,i)=>{const v=d.tlData['tl-'+i];if(v&&v.trim())o+='[연대기-'+dec.label+']\n'+v+'\n\n';});
+  if(d.relations)d.relations.forEach(r=>{if(r.content)o+='['+r.type+'-'+r.name+']\n'+r.content+'\n\n';});
+  o+='\n[유언]\n';
+  if(d.will)Object.entries(d.will).forEach(([k,v])=>{if(v&&v.trim())o+=k+': '+v+'\n\n';});
+  if(d.letters)d.letters.forEach(l=>{if(l.content)o+='[편지] '+l.to+'\n'+l.content+'\n\n';});
+  if(d.grandLetters)d.grandLetters.forEach(l=>{if(l.content)o+='[편지] '+l.to+'\n'+l.content+'\n\n';});
+  o+='\n[중보기도]\n';
+  if(d.intercession)Object.entries(d.intercession).forEach(([k,v])=>{if(v&&v.trim())o+=k+': '+v+'\n\n';});
   return o;
 }
 
-// Google Drive
 async function saveToDrive(text){
-  const token=await getGoogleToken();if(!token)return false;
+  const token=await getGT();if(!token)return false;
   try{
-    const sr=await fetch(`https://www.googleapis.com/drive/v3/files?q=name+contains+'나의참회록'+and+'${DRIVE_FOLDER_ID}'+in+parents+and+trashed=false&orderBy=modifiedTime+desc&pageSize=1`,{headers:{'Authorization':'Bearer '+token}});
+    const sr=await fetch('https://www.googleapis.com/drive/v3/files?q=name+contains+%27%EB%82%98%EC%9D%98%EC%B0%B8%ED%9A%8C%EB%A1%9D%27+and+%27'+DRIVE_FOLDER_ID+'%27+in+parents+and+trashed%3Dfalse&orderBy=modifiedTime+desc&pageSize=1',{headers:{'Authorization':'Bearer '+token}});
     const sd=await sr.json();const ex=sd.files&&sd.files[0];
-    if(ex){const r=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${ex.id}?uploadType=media`,{method:'PATCH',headers:{'Authorization':'Bearer '+token,'Content-Type':'text/plain; charset=utf-8'},body:text});return r.ok;}
-    else{const meta={name:'나의참회록_'+new Date().toISOString().slice(0,10)+'.txt',parents:[DRIVE_FOLDER_ID],mimeType:'text/plain'};const bd='--b\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify(meta)+'\r\n--b\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n'+text+'\r\n--b--';const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'multipart/related; boundary=b'},body:bd});return r.ok;}
+    if(ex){const r=await fetch('https://www.googleapis.com/upload/drive/v3/files/'+ex.id+'?uploadType=media',{method:'PATCH',headers:{'Authorization':'Bearer '+token,'Content-Type':'text/plain; charset=utf-8'},body:text});return r.ok;}
+    const meta={name:'나의참회록_'+new Date().toISOString().slice(0,10)+'.txt',parents:[DRIVE_FOLDER_ID],mimeType:'text/plain'};
+    const bd='--b\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify(meta)+'\r\n--b\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n'+text+'\r\n--b--';
+    const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'multipart/related; boundary=b'},body:bd});
+    return r.ok;
   }catch(e){return false;}
 }
-function getGoogleToken(){
+function getGT(){
   return new Promise(resolve=>{
     const t=sessionStorage.getItem('g_token'),exp=parseInt(sessionStorage.getItem('g_token_exp')||'0');
     if(t&&Date.now()<exp){resolve(t);return;}
-    if(!window.google||!window.google.accounts){const s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.onload=()=>doToken(resolve);s.onerror=()=>resolve(null);document.head.appendChild(s);}
-    else doToken(resolve);
+    if(!window.google||!window.google.accounts){
+      const s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';
+      s.onload=()=>doT(resolve);s.onerror=()=>resolve(null);document.head.appendChild(s);
+    } else doT(resolve);
   });
 }
-function doToken(resolve){
+function doT(resolve){
   try{google.accounts.oauth2.initTokenClient({client_id:'1009561708424-chamhoerok.apps.googleusercontent.com',scope:'https://www.googleapis.com/auth/drive.file',callback:resp=>{if(resp.access_token){sessionStorage.setItem('g_token',resp.access_token);sessionStorage.setItem('g_token_exp',String(Date.now()+(resp.expires_in||3600)*1000-60000));resolve(resp.access_token);}else resolve(null);},error_callback:()=>resolve(null)}).requestAccessToken({prompt:''});}catch(e){resolve(null);}
 }
 
 async function saveAll(){
-  const d=getAllData();
-  try{localStorage.setItem('chamhoerok_v3',JSON.stringify(d));}catch(e){}
-  showNotif('☁ Drive에 
+  const d=gd();try{localStorage.setItem('chamhoerok_v3',JSON.stringify(d));}catch(e){}
+  showNotif('☁ Drive에 저장 중...','saving');
+  const ok=await saveToDrive(bt(d));
+  showNotif(ok?'✓ Google Drive에 저장되었습니다':'✦ 기기에 저장되었습니다',ok?'success':'saving');
+}
+
+function loadAll(){
+  try{
+    const raw=localStorage.getItem('chamhoerok_v3')||localStorage.getItem('chamhoerok_v2');if(!raw)return;
+    const d=JSON.parse(raw);
+    if(d.confession)document.getElementById('t-confession').value=d.confession;
+    if(d.gratitude)document.getElementById('t-gratitude').value=d.gratitude;
+    if(d.prayer)document.getElementById('t-prayer').value=d.prayer;
+    if(d.wisdom)document.getElementById('t-wisdom').value=d.wisdom;
+    if(d.letters)letters=d.letters;if(d.grandLetters)grandLetters=d.grandLetters;
+    if(d.tlData)Object.assign(tlData,d.tlData);if(d.relations)relations=d.relations;if(d.photos)photos=d.photos;
+    if(d.faith){['begin','crisis','restore','encounter','now'].forEach(k=>{if(d.faith[k])document.getElementById('f-'+k).value=d.faith[k];});}
+    if(d.will){['faith','family','assets','funeral','legacy','wish'].forEach(k=>{if(d.will[k])document.getElementById('w-'+k).value=d.will[k];});}
+    if(d.intercession){['family','church','nation','mission','final'].forEach(k=>{if(d.intercession[k])document.getElementById('i-'+k).value=d.intercession[k];});}
+    ['confession','gratitude','prayer','wisdom'].forEach(id=>{const ta=document.getElementById('t-'+id),wc=document.getElementById('wc-'+id);if(ta&&wc)wc.textContent=ta.value.replace(/\s/g,'').length.toLocaleString()+' 자';});
+  }catch(e){}
+}
+function exportAll(){const blob=new Blob([bt(gd())],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='나의참회록_'+new Date().toISOString().slice(0,10)+'.txt';a.click();}
+function copyLink(){navigator.clipboard.writeText('https://aijiakorea-svg.github.io/chamhoerok/').then(()=>showNotif('링크가 복사되었습니다','success'));}
+
+let nTimer=null;
+function showNotif(msg,type='success'){const n=document.getElementById('notif');n.textContent=msg;n.className='notif show '+type;if(nTimer)clearTimeout(nTimer);nTimer=setTimeout(()=>n.classList.remove('show'),3000);}
+
+setInterval(()=>{try{localStorage.setItem('chamhoerok_v3',JSON.stringify(gd()));}catch(e){}},120000);
+
+renderLL(letters,'letterList',openLetterByIdx);
+renderLL(grandLetters,'grandList',openGrandByIdx);
+renderTL();renderRel();renderPh();loadAll();
+switchScreen('memoir');
+</script>
+</body>
+</html>
